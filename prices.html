@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>База отдыха «Раздолье»</title>
+    <link rel="icon" type="image/png" href="photos/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5faf0;
+            color: #1c2f1a;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            background: #0f2b0f;
+            box-shadow: 0 6px 18px rgba(0, 20, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #5f9e4b;
+            padding: 4px 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #e9f5db;
+        }
+
+        .logo-text span {
+            color: #c9e24b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e1f0d5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #f9e45b;
+        }
+
+        .btn-outline-green {
+            border: 1px solid #b9df7e;
+            padding: 8px 18px;
+            border-radius: 40px;
+            background: transparent;
+            color: #e9ffcf;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-outline-green:hover {
+            background: #b9df7e;
+            color: #0f2b0f;
+        }
+
+        .btn-primary {
+            background: #93c47d;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #1f3a1a;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #5f9e4b;
+            color: white;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2c6e2c;
+            margin: 40px 0 20px;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 32px;
+            margin: 40px 0;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #d9eaca;
+            transition: transform 0.2s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(80, 110, 40, 0.15);
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #2a3d24;
+        }
+
+        .slider-images {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            height: 100%;
+        }
+
+        .slider-img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+            height: 100%;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.2s;
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .slider-prev {
+            left: 10px;
+        }
+
+        .slider-next {
+            right: 10px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .dot.active {
+            background: #ffdd99;
+            width: 20px;
+            border-radius: 10px;
+        }
+
+        .card-header {
+            background: #2a6b2a;
+            color: white;
+            padding: 18px 20px;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 8px;
+        }
+
+        .card-price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .capacity {
+            display: inline-block;
+            background: #ebf5e2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #497e2c;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #3a4a33;
+            line-height: 1.5;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .features-list li {
+            display: inline-block;
+            background: #f3f9ec;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin: 3px;
+            color: #2d572a;
+        }
+
+        footer {
+            background: #0f2b0f;
+            color: #e2f0d3;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 848px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .logo-area {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 4px 8px;
+            }
+
+            .btn-outline-green {
+                padding: 4px 8px;
+            }
+
+            .slider-container {
+                aspect-ratio: 4 / 5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo-area">
+                    <img class="logo-img" src="photos/logo.png" alt="Логотип Раздолье"
+                        onerror="this.style.display='none'">
+                    <div class="logo-text">Раздолье</div>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Главная</a>
+                    <a href="index.html#about">О нас</a>
+                    <a href="index.html#facilities">Услуги</a>
+                    <a href="index.html#reviews">Отзывы</a>
+                    <a href="index.html#contacts">Контакты</a>
+                    <a href="https://web.max.ru/217665266" target="_blank" class="btn-outline-green"
+                        style="display: inline-flex; align-items: center; gap: 6px">
+                        <img src="photos/MAX-logo.jpg" alt="MAX"
+                            style="height: 18px; width: auto; vertical-align: middle; margin-top: -2px;">MAX</a>
+                    <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green"><i
+                            class="fab fa-vk"></i> VK</a>
+                    <a href="tel:+79889594135" class="btn-outline-green"><i class="fas fa-phone-alt"></i> Позвонить</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">📋 Наши цены — 2026</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;"><b>Актуальные цены аренды с 1 апреля
+                    2026</b>
+            </p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;"><b>Вход на територию</b> (без аренды
+                беседки/домика) 400 ₽-взрослый</p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;">Дети с 7 до 14 лет — 50% от стоимости
+                взрослого.</p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;">Дети до 7 лет <b>БЕСПЛАТНО</b></p>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;">Нажмите на фото, чтобы посмотреть
+                все изображения.</p>
+
+            <div class="price-grid" id="priceGrid"></div>
+
+            <div style="background: #ebf5e2; border-radius: 32px; padding: 24px; text-align: center; margin: 20px 0;">
+                <i class="fas fa-info-circle" style="color: #5b9e3a; font-size: 1.8rem;"></i>
+                <p style="margin-top: 12px;"><strong>Уточняйте актуальные цены и бронирование по телефону:</strong><br>
+                    <a href="tel:+79889594135" style="color: #2a6b2a; font-size: 1.3rem; font-weight: bold;">+7 (988)
+                        959-41-35</a> или <a href="tel:+79044187087"
+                        style="color: #2a6b2a; font-size: 1.3rem; font-weight: bold;">+7 (904) 418-70-87</a>
+                </p>
+                <p>На территории: туалеты, рукомойник, детская площадка, волейбол, парковка, песчаный пляж.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>База отдыха «Раздолье» — Камышин, Рязано-Уральская, 2</p>
+            <p style="margin-top: 12px;"><a href="https://vk.com/baza_otdixa_rasdolje" target="_blank"
+                    style="color: #b9df7e;"><i class="fab fa-vk"></i> ВКонтакте</a> | <a href="index.html"
+                    style="color: #b9df7e;">На главную</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const items = [
+            {
+                name: "Беседка 1", price: "10 000 ₽", priceNote: "/ сутки", capacity: "до 20 человек",
+                desc: "Просторная беседка, холодильник, чайник, столы, лавочки, мангал.",
+                features: ["Холодильник", "Чайник", "Мангал", "Рукомойник"],
+                photos: ["photos/бес11.jpg", "photos/бес12.jpg", "photos/бес13.jpg", "photos/бес14.jpg"]
+            },
+            {
+                name: "Беседка 2", price: "4 000 ₽", priceNote: "/ сутки", capacity: "до 7 человек",
+                desc: "Уютная беседка для небольшой компании. Есть холодильник, чайник, мангал.",
+                features: ["Холодильник", "Чайник", "Мангал"],
+                photos: ["photos/бес21.jpg", "photos/бес22.jpg", "photos/бес23.jpg", "photos/бес24.jpg", "photos/бес255.jpg"]
+            },
+            {
+                name: "Беседка 3", price: "5 000 ₽", priceNote: "/ сутки", capacity: "до 10 человек",
+                desc: "Вместительная беседка, холодильник, чайник, столы, лавочки, мангал.",
+                features: ["Холодильник", "Чайник", "Мангал"],
+                photos: ["photos/бес31.jpg", "photos/бес32.jpg", "photos/бес33.jpg", "photos/бес34.jpg", "photos/бес35.jpg"]
+            },
+            {
+                name: "Беседка 4", price: "8 000 ₽", priceNote: "/ сутки", capacity: "до 16 человек",
+                desc: "Просторная беседка, холодильник, чайник, столы, лавочки, мангал.",
+                features: ["Холодильник", "Чайник", "Мангал"],
+                photos: ["photos/бес41.jpg", "photos/бес42.jpg", "photos/бес43.jpg", "photos/бес44.jpg"]
+            },
+            {
+                name: "Беседка 5", price: "6 000 ₽", priceNote: "/ сутки", capacity: "до 12 человек",
+                desc: "Уютная беседка, холодильник, чайник, столы, лавочки, мангал.",
+                features: ["Холодильник", "Чайник", "Мангал"],
+                photos: ["photos/бес51.jpg", "photos/бес52.jpg", "photos/бес53.jpg", "photos/бес54.jpg", "photos/бес55.jpg"]
+            },
+            {
+                name: "Беседка 6", price: "6 000 ₽", priceNote: "/ сутки", capacity: "до 12 человек",
+                desc: "Просторная беседка, холодильник, чайник, столы, лавочки, мангал.",
+                features: ["Холодильник", "Чайник", "Мангал"],
+                photos: ["photos/бес61.jpg", "photos/бес62.jpg", "photos/бес63.jpg", "photos/бес64.jpg"]
+            },
+            {
+                name: "Кованая беседка", price: "3 000 ₽", priceNote: "/ сутки", capacity: "до 6 человек",
+                desc: "Романтичная кованая беседка. Холодильник, чайник, стол, лавочки, мангал.",
+                features: ["Холодильник", "Чайник", "Мангал"],
+                photos: ["photos/ковбес.jpg", "photos/ковбес1.jpg", "photos/ковбес2.jpg"]
+            },
+            {
+                name: "Сруб", price: "10 000 ₽", priceNote: "/ сутки", capacity: "до 16 человек",
+                desc: "Холодильник, чайник, диван, стол, лавочки, мангал. Отапливается обогревателями.",
+                features: ["Холодильник", "Чайник", "Мангал", "Обогрев"],
+                photos: ["photos/сруб.jpg", "photos/сруб1.jpg", "photos/сруб2.jpg", "photos/сруб3.jpg", "photos/сруб4.jpg"]
+            },
+            {
+                name: "Лаунж-зона", price: "1 200 ₽", priceNote: "/ сутки", capacity: "2 места",
+                desc: "Два шезлонга и столик на песчаном пляже. Идеально для релакса у воды.",
+                features: ["Шезлонги", "Столик", "Пляж"],
+                photos: ["photos/лаунж.jpg", "photos/лаунж1.jpg", "photos/лаунж2.jpg"]
+            },
+            {
+                name: "Красный домик", price: "10 000 ₽", priceNote: "/ сутки", capacity: "до 16 человек",
+                desc: "Холодильник, чайник, диван, стол, лавочки, мангал. Отапливается обогревателями.",
+                features: ["Холодильник", "Чайник", "Мангал", "Обогрев"],
+                photos: ["photos/крдом.jpg", "photos/крдом1.jpg", "photos/крдом2.jpg", "photos/крдом3.jpg", "photos/крдом4.jpg"]
+            },
+            {
+                name: "Синий домик", price: "12 000 ₽", priceNote: "/ сутки", capacity: "до 20 человек",
+                desc: "Холодильник, чайник, диван, стол, лавочки, мангал. Отапливается обогревателями.",
+                features: ["Холодильник", "Чайник", "Мангал", "Обогрев"],
+                photos: ["photos/синдом.jpg", "photos/синдом1.jpg", "photos/синдом2.jpg", "photos/синдом3.jpg", "photos/синдом4.jpg"]
+            },
+            {
+                name: "Зелёный домик", price: "12 000 ₽", priceNote: "/ сутки", capacity: "до 20 человек",
+                desc: "Холодильник, чайник, диван, стол, лавочки, мангал. Отапливается обогревателями.",
+                features: ["Холодильник", "Чайник", "Мангал", "Обогрев"],
+                photos: ["photos/зелдом.jpg", "photos/зелдом1.jpg", "photos/зелдом2.jpg", "photos/зелдом3.jpg", "photos/зелдом4.jpg"]
+            },
+            {
+                name: "Пляжный дом", price: "от 14 000 ₽", priceNote: "/ сутки", capacity: "до 25 человек",
+                desc: "Панорамные окна, вид на пляж. 2 холодильника, микроволновка, чайник, сплит-система. 700₽-взрослый.",
+                features: ["700 ₽/чел", "2 холодильника", "Микроволновка", "Сплит-система", "Мангал"],
+                photos: ["photos/плдом.jpg", "photos/плдом1.jpg", "photos/плдом2.jpg", "photos/плдом3.jpg", "photos/плдом4.jpg"]
+            },
+            {
+                name: "Беседка Лофт", price: "от 13 000 ₽", priceNote: "/ сутки", capacity: "до 35 человек",
+                desc: "Стильная беседка, холодильники, чайник, вентиляторы, мангал. 600₽-взрослый.",
+                features: ["600 ₽/чел", "Холодильники", "Вентиляторы", "Мангал", "Детская площадка"],
+                photos: ["photos/лофт.jpg", "photos/лофт1.jpg", "photos/лофт2.jpg", "photos/лофт3.jpg"]
+            },
+            {
+                name: "Большая беседка", price: "от 15 000 ₽", priceNote: "/ сутки", capacity: "до 60 человек",
+                desc: "Холодильники, чайник, сплит-система, печка-буржуйка зимой. 600₽-взрослый.",
+                features: ["600 ₽/чел", "Сплит-система", "Печка зимой", "2 холодильника", "Мангал"],
+                photos: ["photos/болшбес.jpg", "photos/болшбес1.jpg", "photos/болшбес2.jpg", "photos/болшбес3.jpg", "photos/болшбес4.jpg"]
+            },
+            {
+                name: "Пирс, стоянка маломерных судов", price: "от 1 500 ₽", priceNote: "/ сутки", capacity: "",
+                desc: "Длина пирса 20м. Глубина до 4 метра. Стоимость аренды 250р за 1м судна в сутки. При аренде от 1 месяца - цена договорная.",
+                features: ["20 метров", "Глубина до 4м", "Договорная цена"],
+                photos: ["photos/пирс.jpg", "photos/пирс2.jpg", "photos/пирс3.jpg", "photos/пирс4.jpg"]
+            },
+            {
+                name: "Катамараны", price: "--- ₽", priceNote: "/ - час", capacity: "до 4 человека",
+                desc: "Прогулочный катамаран. Отличный способ провести время на воде.",
+                features: ["Спасательные жилеты", "Устойчивая конструкция"],
+                photos: ["photos/катамаран1.jpg", "photos/катамаран2.jpg", "photos/катамаран3.jpg", "photos/катамаран4.jpg"]
+            },
+            {
+                name: "SUP-борды", price: "--- ₽", priceNote: "/ - час", capacity: "до 2 человека",
+                desc: "Наплывные сапборды для прогулок по реке Камышинке. Идеально для активного отдыха, йоги на воде и фотосессий.",
+                features: ["Спасательные жилеты", "Весло", "Инструктаж"],
+                photos: ["photos/сап.jpg", "photos/сап1.jpg", "photos/сап2.jpg", "photos/сап3.jpg"]
+            }
+        ];
+
+        // Функция для получения реального URL фото или заглушки
+        function getPhotoUrl(photoPath, cardName, photoIndex) {
+            if (photoPath && photoPath !== "") {
+                return photoPath; // Возвращаем путь, который вы указали
+            }
+            // Если фото нет — показываем стилизованную заглушку
+            const colors = ["#8fc96b", "#6ba53a", "#4a8430", "#2a6b2a", "#0f4a0f"];
+            const color = colors[photoIndex % colors.length];
+            return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23${color.substring(1)}'/%3E%3Ctext x='50%25' y='50%25' font-size='28' fill='white' text-anchor='middle' dy='.3em' font-family='Inter'%3E${cardName}%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='20' fill='white' text-anchor='middle' dy='.3em' font-family='Inter'%3EФото ${photoIndex + 1}%3C/text%3E%3C/svg%3E`;
+        }
+
+        // Рендер всех карточек
+        const container = document.getElementById('priceGrid');
+        let cardsHtml = '';
+
+        items.forEach((item, idx) => {
+            // Определяем, сколько фото в карточке
+            const photoList = item.photos && item.photos.length > 0 ? item.photos : [];
+            const hasPhotos = photoList.length > 0;
+
+            // Для слайдера нужно минимум 1 фото. Если фото нет — показываем 1 заглушку
+            const slidesCount = hasPhotos ? photoList.length : 1;
+
+            let sliderImagesHtml = '';
+            for (let i = 0; i < slidesCount; i++) {
+                let photoUrl = hasPhotos ? photoList[i] : null;
+                if (!photoUrl) {
+                    photoUrl = getPhotoUrl(null, item.name, i);
+                }
+                sliderImagesHtml += `<img class="slider-img" src="${photoUrl}" alt="${item.name} - фото ${i + 1}" onerror="this.src='${getPhotoUrl(null, item.name, i)}'">`;
+            }
+
+            // Создаём кнопки и точки только если фото больше 1
+            const buttonsHtml = (slidesCount > 1) ? `
+                <button class="slider-btn slider-prev" data-slider="slider-${idx}">‹</button>
+                <button class="slider-btn slider-next" data-slider="slider-${idx}">›</button>
+                <div class="slider-dots" id="dots-${idx}">
+                    ${Array(slidesCount).fill().map((_, i) => `<span class="dot" data-pos="${i}"></span>`).join('')}
+                </div>
+            ` : '';
+
+            cardsHtml += `
+            <div class="price-card" data-card-index="${idx}">
+                <div class="slider-container" id="slider-${idx}">
+                    <div class="slider-images">
+                        ${sliderImagesHtml}
+                    </div>
+                    ${buttonsHtml}
+                </div>
+                <div class="card-header">
+                    <h3>${item.name}</h3>
+                    <div class="card-price">${item.price} <small>${item.priceNote}</small></div>
+                </div>
+                <div class="card-body">
+                    ${item.capacity ? `<span class="capacity">👥 ${item.capacity}</span>` : ''}
+                    <div class="description">${item.desc}</div>
+                    <ul class="features-list">
+                        ${item.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+            `;
+        });
+
+        container.innerHTML = cardsHtml;
+
+        // Инициализация слайдеров
+        function initSliders() {
+            document.querySelectorAll('.slider-container').forEach(container => {
+                const imagesDiv = container.querySelector('.slider-images');
+                const prevBtn = container.querySelector('.slider-prev');
+                const nextBtn = container.querySelector('.slider-next');
+                const dots = container.querySelectorAll('.dot');
+                const totalSlides = imagesDiv.children.length;
+
+                if (totalSlides <= 1) return; // Если одно фото — слайдер не нужен
+
+                let currentIndex = 0;
+
+                function updateSlider() {
+                    imagesDiv.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    if (dots.length) {
+                        dots.forEach((dot, i) => {
+                            if (i === currentIndex) dot.classList.add('active');
+                            else dot.classList.remove('active');
+                        });
+                    }
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateSlider();
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateSlider();
+                }
+
+                if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+                if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateSlider();
+                    });
+                });
+
+                // Свайп на мобильных
+                let touchStartX = 0;
+                container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                container.addEventListener('touchend', (e) => {
+                    const touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchEndX - touchStartX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) prevSlide();
+                        else nextSlide();
+                    }
+                });
+
+                // Активируем первую точку
+                if (dots.length) dots[0].classList.add('active');
+                updateSlider();
+            });
+        }
+
+        initSliders();
+    </script>
+</body>
+
+</html>
