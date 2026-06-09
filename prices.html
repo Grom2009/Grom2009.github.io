@@ -71,11 +71,13 @@
             color: #c9e24b;
         }
 
+        /* Навигация — на компьютере всё в строку, на телефоне в две */
         .nav-links {
             display: flex;
-            gap: 28px;
             flex-wrap: wrap;
             align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
         }
 
         .nav-links a {
@@ -83,6 +85,8 @@
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
+            font-size: 0.95rem;
+            padding: 6px 12px;
         }
 
         .nav-links a:hover {
@@ -91,7 +95,7 @@
 
         .btn-outline-green {
             border: 1px solid #b9df7e;
-            padding: 8px 18px;
+            padding: 6px 12px;
             border-radius: 40px;
             background: transparent;
             color: #e9ffcf;
@@ -292,7 +296,8 @@
             margin-top: 40px;
         }
 
-        @media (max-width: 848px) {
+        /* Телефоны: нав кнопки в две строки */
+        @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
             }
@@ -303,16 +308,31 @@
             }
 
             .nav-links {
-                justify-content: center;
-                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
             }
 
-            .price-grid {
-                grid-template-columns: 1fr;
+            .nav-links .nav-main {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+                width: 100%;
+                order: 1;
+            }
+
+            .nav-links .nav-secondary {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+                width: 100%;
+                order: 2;
             }
 
             .nav-links a {
-                font-size: 0.85rem;
+                font-size: 0.7rem;
                 padding: 4px 8px;
             }
 
@@ -320,8 +340,19 @@
                 padding: 4px 8px;
             }
 
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
             .slider-container {
                 aspect-ratio: 4 / 5;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a {
+                font-size: 0.65rem;
+                padding: 4px 6px;
             }
         }
     </style>
@@ -338,18 +369,22 @@
                     <div class="logo-text">Раздолье</div>
                 </div>
                 <div class="nav-links">
-                    <a href="index.html">Главная</a>
-                    <a href="index.html#about">О нас</a>
-                    <a href="index.html#facilities">Услуги</a>
-                    <a href="index.html#reviews">Отзывы</a>
-                    <a href="index.html#contacts">Контакты</a>
-                    <a href="https://web.max.ru/217665266" target="_blank" class="btn-outline-green"
-                        style="display: inline-flex; align-items: center; gap: 6px">
-                        <img src="photos/MAX-logo.jpg" alt="MAX"
-                            style="height: 18px; width: auto; vertical-align: middle; margin-top: -2px;">MAX</a>
-                    <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green"><i
-                            class="fab fa-vk"></i> VK</a>
-                    <a href="tel:+79889594135" class="btn-outline-green"><i class="fas fa-phone-alt"></i> Позвонить</a>
+                    <div class="nav-main">
+                        <a href="index.html">Главная</a>
+                        <a href="index.html#about">О нас</a>
+                        <a href="index.html#facilities">Услуги</a>
+                        <a href="index.html#reviews">Отзывы</a>
+                        <a href="index.html#contacts">Контакты</a>
+                    </div>
+                    <div class="nav-secondary">
+                        <a href="https://web.max.ru/217665266" target="_blank" class="btn-outline-green"
+                            style="display: inline-flex; align-items: center; gap: 6px">
+                            <img src="photos/MAX-logo.jpg" alt="MAX"
+                                style="height: 16px; width: auto; vertical-align: middle;">MAX</a>
+                        <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green"><i
+                                class="fab fa-vk"></i> VK</a>
+                        <a href="tel:+79889594135" class="btn-outline-green"><i class="fas fa-phone-alt"></i> Позвонить</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -507,9 +542,8 @@
         // Функция для получения реального URL фото или заглушки
         function getPhotoUrl(photoPath, cardName, photoIndex) {
             if (photoPath && photoPath !== "") {
-                return photoPath; // Возвращаем путь, который вы указали
+                return photoPath;
             }
-            // Если фото нет — показываем стилизованную заглушку
             const colors = ["#8fc96b", "#6ba53a", "#4a8430", "#2a6b2a", "#0f4a0f"];
             const color = colors[photoIndex % colors.length];
             return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23${color.substring(1)}'/%3E%3Ctext x='50%25' y='50%25' font-size='28' fill='white' text-anchor='middle' dy='.3em' font-family='Inter'%3E${cardName}%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='20' fill='white' text-anchor='middle' dy='.3em' font-family='Inter'%3EФото ${photoIndex + 1}%3C/text%3E%3C/svg%3E`;
@@ -520,11 +554,8 @@
         let cardsHtml = '';
 
         items.forEach((item, idx) => {
-            // Определяем, сколько фото в карточке
             const photoList = item.photos && item.photos.length > 0 ? item.photos : [];
             const hasPhotos = photoList.length > 0;
-
-            // Для слайдера нужно минимум 1 фото. Если фото нет — показываем 1 заглушку
             const slidesCount = hasPhotos ? photoList.length : 1;
 
             let sliderImagesHtml = '';
@@ -536,7 +567,6 @@
                 sliderImagesHtml += `<img class="slider-img" src="${photoUrl}" alt="${item.name} - фото ${i + 1}" onerror="this.src='${getPhotoUrl(null, item.name, i)}'">`;
             }
 
-            // Создаём кнопки и точки только если фото больше 1
             const buttonsHtml = (slidesCount > 1) ? `
                 <button class="slider-btn slider-prev" data-slider="slider-${idx}">‹</button>
                 <button class="slider-btn slider-next" data-slider="slider-${idx}">›</button>
@@ -570,7 +600,6 @@
 
         container.innerHTML = cardsHtml;
 
-        // Инициализация слайдеров
         function initSliders() {
             document.querySelectorAll('.slider-container').forEach(container => {
                 const imagesDiv = container.querySelector('.slider-images');
@@ -579,7 +608,7 @@
                 const dots = container.querySelectorAll('.dot');
                 const totalSlides = imagesDiv.children.length;
 
-                if (totalSlides <= 1) return; // Если одно фото — слайдер не нужен
+                if (totalSlides <= 1) return;
 
                 let currentIndex = 0;
 
@@ -613,7 +642,6 @@
                     });
                 });
 
-                // Свайп на мобильных
                 let touchStartX = 0;
                 container.addEventListener('touchstart', (e) => {
                     touchStartX = e.changedTouches[0].screenX;
@@ -627,7 +655,6 @@
                     }
                 });
 
-                // Активируем первую точку
                 if (dots.length) dots[0].classList.add('active');
                 updateSlider();
             });
