@@ -530,6 +530,40 @@
             padding-top: 60px;
         }
 
+        /* Исправление для телефонов — все кнопки в 2 строки */
+        @media (max-width: 650px) {
+            .nav-main {
+                gap: 6px;
+            }
+
+            .nav-main a {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+
+            .nav-secondary {
+                gap: 6px;
+            }
+
+            .nav-secondary a {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+        }
+
+        /* Для очень узких экранов */
+        @media (max-width: 480px) {
+            .nav-main a {
+                font-size: 0.65rem;
+                padding: 4px 6px;
+            }
+
+            .nav-secondary a {
+                font-size: 0.65rem;
+                padding: 4px 6px;
+            }
+        }
+
         /* --- Адаптивность --- */
         @media (max-width: 970px) {
             .hero h1 {
@@ -938,10 +972,12 @@
                     <i class="fas fa-trophy" style="font-size: 1.7rem;"></i> Лауреат премии «Хорошее место» от Яндекс
                     Карт — 2026
                 </div>
+                <p>
                 <div class="award-badge">
-                    <p><i class="fas fa-trophy" style="font-size: 1.7rem;"></i> Лауреат премии «Хорошее место» от Яндекс
-                    Карт — 2025</p>
+                    <i class="fas fa-trophy" style="font-size: 1.7rem;"></i> Лауреат премии «Хорошее место» от Яндекс
+                    Карт — 2025
                 </div>
+                </p>
             </div>
         </section>
 
