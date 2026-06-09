@@ -132,12 +132,13 @@
             color: #c9e24b;
         }
 
+        /* Навигация */
         .nav-links {
             display: flex;
-            gap: 28px;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
+            gap: 8px;
         }
 
         .nav-links a {
@@ -145,7 +146,9 @@
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -154,7 +157,7 @@
 
         .btn-outline-green {
             border: 1px solid #b9df7e;
-            padding: 8px 18px;
+            padding: 6px 12px;
             border-radius: 40px;
             background: transparent;
             color: #e9ffcf;
@@ -165,6 +168,52 @@
         .btn-outline-green:hover {
             background: #b9df7e;
             color: #0f2b0f;
+        }
+
+        /* На компьютере — всё в одной строке */
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 8px;
+            }
+
+            .nav-main,
+            .nav-secondary {
+                display: inline-flex;
+                gap: 8px;
+            }
+        }
+
+        /* На телефонах — две строки, кнопки по центру */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .nav-main {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .nav-secondary {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
         }
 
         .hero h1 {
@@ -184,7 +233,7 @@
         .btn-primary {
             background: #93c47d;
             background: linear-gradient(135deg, #7cb45e, #5f9e4b);
-            padding: 14px 32px;
+            padding: 12px 24px;
             border-radius: 60px;
             font-weight: 700;
             color: #1f3a1a;
@@ -193,7 +242,7 @@
             transition: 0.2s;
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
             border: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
         }
 
@@ -202,6 +251,14 @@
             background: linear-gradient(135deg, #86c46a, #4f8a3c);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
             color: white;
+        }
+
+        /* Кнопки в hero на телефонах */
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 20px;
         }
 
         section {
@@ -360,16 +417,16 @@
         }
 
         .contact-info p {
-            margin: 20px 0;
-            font-size: 1.1rem;
+            margin: 16px 0;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .contact-info i {
-            width: 32px;
-            font-size: 1.5rem;
+            width: 28px;
+            font-size: 1.3rem;
             color: #416623;
         }
 
@@ -492,67 +549,12 @@
                 width: 100%;
             }
 
-            .nav-links {
-                justify-content: center;
-                gap: 8px;
-            }
-
-            .nav-links a {
-                font-size: 0.74rem;
-                padding: 4px 8px;
-            }
-
-            .btn-outline-green {
-                padding: 4px 8px;
-            }
-
             .contact-flex {
                 gap: 24px;
                 padding: 24px 20px;
             }
         }
 
-        @media (max-width: 898px) {
-            .contact-flex {
-                flex-direction: column;
-            }
-
-            .map-placeholder {
-                width: 100%;
-                height: 280px;
-                min-height: 280px;
-                order: 2;
-            }
-
-            .contact-info {
-                order: 1;
-            }
-
-            .contact-info p {
-                font-size: 0.9rem;
-                gap: 10px;
-            }
-
-            .contact-info i {
-                font-size: 1.2rem;
-                width: 28px;
-            }
-
-            .contact-info div:last-child {
-                justify-content: center;
-            }
-
-            .contact-info div:last-child a {
-                padding: 6px 12px !important;
-                font-size: 0.75rem !important;
-            }
-
-            .map-placeholder iframe {
-                height: 280px !important;
-            }
-        }
-
-        /* Телефоны: награды вертикально и по левому краю */
         @media (max-width: 700px) {
             .hero-content .awards-wrapper {
                 flex-direction: column !important;
@@ -582,6 +584,67 @@
                 max-width: 300px;
                 margin: 0 auto;
             }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-buttons a {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 898px) {
+            .contact-flex {
+                flex-direction: column;
+            }
+
+            .map-placeholder {
+                width: 100%;
+                height: 280px;
+                min-height: 280px;
+                order: 2;
+            }
+
+            .contact-info {
+                order: 1;
+            }
+
+            .contact-info p {
+                font-size: 0.85rem;
+                gap: 10px;
+            }
+
+            .contact-info i {
+                font-size: 1.1rem;
+                width: 26px;
+            }
+
+            .contact-info div:last-child {
+                justify-content: center;
+            }
+
+            .contact-info div:last-child a {
+                padding: 6px 12px !important;
+                font-size: 0.75rem !important;
+            }
+
+            .map-placeholder iframe {
+                height: 280px !important;
+            }
         }
 
         @media (max-width: 550px) {
@@ -609,14 +672,6 @@
                 margin: 0;
             }
         }
-
-        @media (max-width: 970px) {
-            .section-title {
-                text-align: center !important;
-                width: 100%;
-                display: block;
-            }
-        }
     </style>
 </head>
 
@@ -633,23 +688,29 @@
                         Раздолье</div>
                 </div>
                 <div class="nav-links">
-                    <a href="#about">О нас</a>
-                    <a href="#facilities">Услуги</a>
-                    <a href="#accommodation">Домики</a>
-                    <a href="#reviews">Отзывы</a>
-                    <a href="#contacts">Контакты</a>
-                    <a href="prices.html" class="btn-outline-green"
-                        style="background: #5f9e4b; color: #0f2b0f; border-color: #c9e24b;"><i class="fas fa-tag"></i>
-                        Цены</a>
-                    <a href="https://web.max.ru/217665266" target="_blank" class="btn-outline-green"
-                        style="display: inline-flex; align-items: center; gap: 6px">
-                        <img src="photos/MAX-logo.jpg" alt="MAX"
-                            style="height: 18px; width: auto; vertical-align: middle; margin-top: -2px;">
-                        MAX
-                    </a>
-                    <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green"><i
-                            class="fab fa-vk"></i> VK</a>
-                    <a href="tel:+79889594135" class="btn-outline-green"><i class="fas fa-phone-alt"></i> Позвонить</a>
+                    <div class="nav-main">
+                        <a href="#about">О нас</a>
+                        <a href="#facilities">Услуги</a>
+                        <a href="#accommodation">Домики</a>
+                        <a href="#reviews">Отзывы</a>
+                        <a href="#contacts">Контакты</a>
+                    </div>
+                    <div class="nav-secondary">
+                        <a href="prices.html" class="btn-outline-green"
+                            style="background: #5f9e4b; color: #0f2b0f; border-color: #c9e24b;"><i
+                                class="fas fa-tag"></i>
+                            Цены</a>
+                        <a href="https://web.max.ru/217665266" target="_blank" class="btn-outline-green"
+                            style="display: inline-flex; align-items: center; gap: 6px">
+                            <img src="photos/MAX-logo.jpg" alt="MAX"
+                                style="height: 16px; width: auto; vertical-align: middle;">
+                            MAX
+                        </a>
+                        <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green"><i
+                                class="fab fa-vk"></i> VK</a>
+                        <a href="tel:+79889594135" class="btn-outline-green"><i class="fas fa-phone-alt"></i>
+                            Позвонить</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -669,8 +730,10 @@
                 <div class="hero-content">
                     <h1>База отдыха «Раздолье»</h1>
                     <p>Камышин · Берег реки Камышинки · Relax на природе с душой</p>
-                    <a href="prices.html" class="btn-primary"><i class="fas fa-tag"></i> Смотреть цены</a>
-                    <a href="#contacts" class="btn-primary"><i class="fas fa-calendar-check"></i> Забронировать</a>
+                    <div class="hero-buttons">
+                        <a href="prices.html" class="btn-primary"><i class="fas fa-tag"></i> Смотреть цены</a>
+                        <a href="#contacts" class="btn-primary"><i class="fas fa-calendar-check"></i> Забронировать</a>
+                    </div>
                     <div class="awards-wrapper"
                         style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-start;">
                         <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
@@ -789,34 +852,31 @@
             </div>
         </section>
 
-        <!-- Видео о нас -->
+        <!-- Видео о нас (autoplay выключен) -->
         <section id="video" style="background: #ecf5e4;">
             <div class="container">
                 <h2 class="section-title" style="text-align: center; width: 100%;">Видео о нас</h2>
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                    <!-- 1 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
                             <iframe src="photos/Видео1.mp4" title="Видео 1" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
                         </div>
                     </div>
-                    <!-- 2 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
                             <iframe src="photos/Видео2.mp4" title="Видео 2" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
                         </div>
                     </div>
-                    <!-- 3 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
                             <iframe src="photos/Видео3.mp4" title="Видео 3" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                             </iframe>
                         </div>
@@ -878,12 +938,10 @@
                     <i class="fas fa-trophy" style="font-size: 1.7rem;"></i> Лауреат премии «Хорошее место» от Яндекс
                     Карт — 2026
                 </div>
-                <p>
                 <div class="award-badge">
                     <i class="fas fa-trophy" style="font-size: 1.7rem;"></i> Лауреат премии «Хорошее место» от Яндекс
                     Карт — 2025
                 </div>
-                </p>
             </div>
         </section>
 
