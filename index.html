@@ -886,33 +886,36 @@
             </div>
         </section>
 
-        <!-- Видео о нас (autoplay выключен) -->
+        <!-- Видео о нас (автовоспроизведение отключено) -->
         <section id="video" style="background: #ecf5e4;">
             <div class="container">
                 <h2 class="section-title" style="text-align: center; width: 100%;">Видео о нас</h2>
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    <!-- 1 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
-                            <iframe src="photos/Видео1.mp4" title="Видео 1" frameborder="0"
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                            </iframe>
+                            <video controls preload="none" style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="photos/Видео1.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
                         </div>
                     </div>
+                    <!-- 2 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
-                            <iframe src="photos/Видео2.mp4" title="Видео 2" frameborder="0"
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                            </iframe>
+                            <video controls preload="none" style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="photos/Видео2.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
                         </div>
                     </div>
+                    <!-- 3 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
-                            <iframe src="photos/Видео3.mp4" title="Видео 3" frameborder="0"
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                            </iframe>
+                            <video controls preload="none" style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="photos/Видео3.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -1084,6 +1087,35 @@
                 if (fallback) fallback.style.display = 'flex';
             };
         }
+
+        // ===== ПРИНУДИТЕЛЬНАЯ ОСТАНОВКА ВСЕХ ВИДЕО =====
+        function stopAllVideos() {
+            const allVideos = document.querySelectorAll('video');
+            console.log('Найдено видео:', allVideos.length);
+            allVideos.forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+                video.removeAttribute('autoplay');
+                video.load(); // Перезагружаем видео, чтобы сбросить состояние
+            });
+        }
+
+        // Останавливаем после полной загрузки страницы
+        window.addEventListener('load', function () {
+            setTimeout(stopAllVideos, 50);
+        });
+
+        // Останавливаем при возврате на страницу (из истории браузера)
+        window.addEventListener('pageshow', function (event) {
+            setTimeout(stopAllVideos, 10);
+        });
+
+        // Останавливаем если страница становится видимой после скрытия
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) {
+                setTimeout(stopAllVideos, 10);
+            }
+        });
     </script>
 </body>
 
