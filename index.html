@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
+        /* ===== ОБНУЛЕНИЕ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -31,6 +32,7 @@
             z-index: 2;
         }
 
+        /* ===== ШАПКА ===== */
         header {
             background: #0f2b0f;
             box-shadow: 0 6px 18px rgba(0, 20, 0, 0.2);
@@ -39,62 +41,6 @@
             z-index: 100;
         }
 
-        /* --- Стили для слайд-шоу с зелёным градиентом --- */
-        .hero {
-            position: relative;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            border-bottom: 5px solid #aad66c;
-            overflow: hidden;
-        }
-
-        .slideshow-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .slideshow-bg img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .slideshow-bg img.active {
-            opacity: 1;
-        }
-
-        /* Зелёный градиент поверх фото (один слой) */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(105deg, rgba(20, 55, 15, 0.75), rgba(10, 35, 8, 0.65));
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 720px;
-            color: white;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-            text-align: left;
-        }
-
-        /* --- Остальные стили --- */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -132,7 +78,7 @@
             color: #c9e24b;
         }
 
-        /* Навигация */
+        /* ===== НАВИГАЦИЯ ===== */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -170,7 +116,7 @@
             color: #0f2b0f;
         }
 
-        /* На компьютере — всё в одной строке */
+        /* На компьютере — одна строка */
         @media (min-width: 769px) {
             .nav-links {
                 display: flex;
@@ -186,7 +132,7 @@
             }
         }
 
-        /* На телефонах — две строки, кнопки по центру */
+        /* На телефонах — две строки */
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
@@ -216,6 +162,83 @@
             }
         }
 
+        @media (max-width: 650px) {
+
+            .nav-main,
+            .nav-secondary {
+                gap: 6px;
+            }
+
+            .nav-main a,
+            .nav-secondary a {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .nav-main a,
+            .nav-secondary a {
+                font-size: 0.65rem;
+                padding: 4px 6px;
+            }
+        }
+
+        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            border-bottom: 5px solid #aad66c;
+            overflow: hidden;
+        }
+
+        .slideshow-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slideshow-bg img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .slideshow-bg img.active {
+            opacity: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(105deg, rgba(20, 55, 15, 0.75), rgba(10, 35, 8, 0.65));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 720px;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+            text-align: left;
+        }
+
         .hero h1 {
             font-size: 4rem;
             font-weight: 800;
@@ -226,12 +249,18 @@
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 32px;
-            line-height: 1.4;
             font-weight: 400;
         }
 
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        /* ===== КНОПКИ ===== */
         .btn-primary {
-            background: #93c47d;
             background: linear-gradient(135deg, #7cb45e, #5f9e4b);
             padding: 12px 24px;
             border-radius: 60px;
@@ -249,18 +278,10 @@
         .btn-primary:hover {
             transform: translateY(-3px);
             background: linear-gradient(135deg, #86c46a, #4f8a3c);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
-            color: white;
+            color: #fff;
         }
 
-        /* Кнопки в hero на телефонах */
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 20px;
-        }
-
+        /* ===== СЕКЦИИ ===== */
         section {
             padding: 80px 0;
         }
@@ -285,6 +306,7 @@
             border-radius: 4px;
         }
 
+        /* ===== СЕТКИ ===== */
         .grid-3,
         .grid-4 {
             display: grid;
@@ -292,12 +314,13 @@
             gap: 32px;
         }
 
+        /* ===== КАРТОЧКИ ===== */
         .card {
-            background: white;
+            background: #fff;
             border-radius: 28px;
             overflow: hidden;
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-            transition: all 0.25s;
+            transition: 0.25s;
             border: 1px solid #deefcf;
         }
 
@@ -340,6 +363,7 @@
             margin-top: 14px;
         }
 
+        /* ===== ФИЧИ ===== */
         .features-list {
             display: flex;
             flex-wrap: wrap;
@@ -366,8 +390,9 @@
             color: #5b9e3a;
         }
 
+        /* ===== ОТЗЫВЫ ===== */
         .review-card {
-            background: white;
+            background: #fff;
             padding: 28px;
             border-radius: 32px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -396,12 +421,69 @@
 
         .review-date {
             font-size: 0.7rem;
-            color: #8a9a7a;
-            margin-top: 8px;
-            font-weight: 400;
             color: #537a35;
+            margin-top: 8px;
         }
 
+        .award-badge {
+            background: #e4f5d4;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 26px;
+            border-radius: 80px;
+            margin: 15px auto 0;
+            width: fit-content;
+            font-weight: 600;
+            color: #376d1c;
+        }
+
+        .rating-highlight {
+            background: #497e2c;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .rating-link:hover .rating-highlight {
+            background: #2a6b2a !important;
+            transform: scale(1.02);
+        }
+
+        /* ===== ВИДЕО ===== */
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 9 / 16;
+            background: #2a3d24;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (min-width: 701px) {
+            #video>div>div {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            #video .video-container {
+                max-width: 350px;
+                margin: 0;
+            }
+        }
+
+        /* ===== КОНТАКТЫ ===== */
         .contact-flex {
             display: flex;
             flex-wrap: wrap;
@@ -416,18 +498,41 @@
             flex: 1.2;
         }
 
-        .contact-info p {
-            margin: 16px 0;
-            font-size: 1rem;
+        .contact-item {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 10px;
+            margin: 16px 0;
         }
 
-        .contact-info i {
+        .contact-item i {
             width: 28px;
             font-size: 1.3rem;
             color: #416623;
+            flex-shrink: 0;
+        }
+
+        .contact-item .contact-label {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .contact-item .contact-value {
+            display: block;
+            width: 100%;
+            padding-left: 38px;
+            font-size: 1rem;
+            color: #1c2f1a;
+        }
+
+        .contact-item .contact-value a {
+            color: #4a8430;
+            text-decoration: none;
+        }
+
+        .contact-item .contact-value a:hover {
+            text-decoration: underline;
         }
 
         .map-placeholder {
@@ -444,25 +549,7 @@
             border: 0;
         }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            border-radius: 32px;
-            overflow: hidden;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-            aspect-ratio: 9 / 16;
-            background: #2a3d24;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
+        /* ===== ПОДВАЛ ===== */
         footer {
             background: #0f2b0f;
             color: #e2f0d3;
@@ -493,78 +580,7 @@
             color: #0f2b0f;
         }
 
-        .award-badge {
-            background: #e4f5d4;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 26px;
-            border-radius: 80px;
-            margin: 15px auto 0;
-            width: fit-content;
-            font-weight: 600;
-            color: #376d1c;
-        }
-
-        .rating-highlight {
-            background: #497e2c;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 40px;
-            display: inline-block;
-            font-weight: 700;
-        }
-
-        .rating-link:hover .rating-highlight {
-            background: #2a6b2a !important;
-            transform: scale(1.02);
-        }
-
-        /* Отступы между последними блоками */
-        #contacts {
-            padding-bottom: 40px;
-        }
-
-        #questions {
-            margin-top: 0;
-            padding-top: 60px;
-        }
-
-        /* Исправление для телефонов — все кнопки в 2 строки */
-        @media (max-width: 650px) {
-            .nav-main {
-                gap: 6px;
-            }
-
-            .nav-main a {
-                font-size: 0.7rem;
-                padding: 4px 8px;
-            }
-
-            .nav-secondary {
-                gap: 6px;
-            }
-
-            .nav-secondary a {
-                font-size: 0.7rem;
-                padding: 4px 8px;
-            }
-        }
-
-        /* Для очень узких экранов */
-        @media (max-width: 480px) {
-            .nav-main a {
-                font-size: 0.65rem;
-                padding: 4px 6px;
-            }
-
-            .nav-secondary a {
-                font-size: 0.65rem;
-                padding: 4px 6px;
-            }
-        }
-
-        /* --- Адаптивность --- */
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 970px) {
             .hero h1 {
                 font-size: 2.7rem;
@@ -589,6 +605,48 @@
             }
         }
 
+        @media (max-width: 898px) {
+            .contact-flex {
+                flex-direction: column;
+            }
+
+            .map-placeholder {
+                width: 100%;
+                height: 280px;
+                min-height: 280px;
+                order: 2;
+            }
+
+            .contact-info {
+                order: 1;
+            }
+
+            .map-placeholder iframe {
+                height: 280px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-item {
+                gap: 8px;
+                margin: 14px 0;
+            }
+
+            .contact-item i {
+                width: 22px;
+                font-size: 1.1rem;
+            }
+
+            .contact-item .contact-label {
+                font-size: 0.95rem;
+            }
+
+            .contact-item .contact-value {
+                padding-left: 32px;
+                font-size: 0.92rem;
+            }
+        }
+
         @media (max-width: 700px) {
             .hero-content .awards-wrapper {
                 flex-direction: column !important;
@@ -609,7 +667,6 @@
                 padding-top: 40px;
             }
 
-            /* Центрирование видео на телефонах */
             #video>div>div {
                 justify-content: center;
             }
@@ -641,46 +698,6 @@
             }
         }
 
-        @media (max-width: 898px) {
-            .contact-flex {
-                flex-direction: column;
-            }
-
-            .map-placeholder {
-                width: 100%;
-                height: 280px;
-                min-height: 280px;
-                order: 2;
-            }
-
-            .contact-info {
-                order: 1;
-            }
-
-            .contact-info p {
-                font-size: 0.85rem;
-                gap: 10px;
-            }
-
-            .contact-info i {
-                font-size: 1.1rem;
-                width: 26px;
-            }
-
-            .contact-info div:last-child {
-                justify-content: center;
-            }
-
-            .contact-info div:last-child a {
-                padding: 6px 12px !important;
-                font-size: 0.75rem !important;
-            }
-
-            .map-placeholder iframe {
-                height: 280px !important;
-            }
-        }
-
         @media (max-width: 550px) {
             #questions div:last-child {
                 flex-direction: column;
@@ -692,68 +709,48 @@
             }
         }
 
-        /* Для компьютеров — видео в ряд */
-        @media (min-width: 701px) {
-            #video>div>div {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-            }
-
-            #video .video-container {
-                max-width: 350px;
-                margin: 0;
-            }
-        }
-
-        /* Уменьшаем текст на телефонах */
-        @media (max-width: 768px) {
-            .contact-info p {
-                font-size: 0.85rem;
-                gap: 8px;
-                flex-wrap: wrap;
-            }
-
-            .contact-info i {
-                font-size: 1rem;
-                width: 24px;
-            }
-
-            .contact-info a {
-                font-size: 0.85rem;
-                word-break: break-word;
-            }
-        }
-
-        /* Для очень маленьких экранов */
         @media (max-width: 480px) {
-            .contact-info p {
-                font-size: 0.75rem;
-                gap: 6px;
-            }
-
-            .contact-info i {
-                font-size: 0.9rem;
+            .contact-item i {
                 width: 20px;
+                font-size: 1rem;
             }
 
-            .contact-info a {
-                font-size: 0.75rem;
+            .contact-item .contact-label {
+                font-size: 0.9rem;
+            }
+
+            .contact-item .contact-value {
+                padding-left: 28px;
+                font-size: 0.85rem;
             }
         }
 
-        .mobile-text {
-            display: none;
-        }
-
-        @media (max-width: 480px) {
-            .desktop-text {
-                display: none;
+        /* Компьютер — всё в одну строку */
+        @media (min-width: 769px) {
+            .contact-item {
+                flex-wrap: nowrap;
+                align-items: center;
+                gap: 10px;
+                margin: 16px 0;
             }
 
-            .mobile-text {
+            .contact-item i {
+                width: 28px;
+                font-size: 1.3rem;
+                flex-shrink: 0;
+            }
+
+            .contact-item .contact-label {
+                flex-shrink: 0;
+                font-size: 1rem;
+            }
+
+            .contact-item .contact-value {
                 display: inline;
+                width: auto;
+                padding-left: 0;
+                font-size: 1rem;
+                flex: 1;
             }
         }
     </style>
@@ -761,8 +758,8 @@
 
 <body>
 
+    <!-- ===== ШАПКА ===== -->
     <header>
-        <!-- Навигация -->
         <div class="container">
             <div class="navbar">
                 <div class="logo-area">
@@ -783,13 +780,11 @@
                     <div class="nav-secondary">
                         <a href="prices.html" class="btn-outline-green"
                             style="background: #5f9e4b; color: #0f2b0f; border-color: #c9e24b;"><i
-                                class="fas fa-tag"></i>
-                            Цены</a>
+                                class="fas fa-tag"></i> Цены</a>
                         <a href="https://max.ru/u/217665266" target="_blank" class="btn-outline-green"
-                            style="display: inline-flex; align-items: center; gap: 6px">
+                            style="display: inline-flex; align-items: center; gap: 6px;">
                             <img src="photos/MAX-logo.jpg" alt="MAX"
-                                style="height: 16px; width: auto; vertical-align: middle;">
-                            MAX
+                                style="height: 16px; width: auto; vertical-align: middle;"> MAX
                         </a>
                         <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green"><i
                                 class="fab fa-vk"></i> VK</a>
@@ -801,8 +796,10 @@
         </div>
     </header>
 
+    <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
     <main>
-        <!-- Заставка слайд-шоу и зелёным градиентом -->
+
+        <!-- Hero -->
         <div class="hero">
             <div class="slideshow-bg">
                 <img src="photos/fon1.jpg" alt="Фон 1" class="active">
@@ -823,36 +820,31 @@
                         style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-start;">
                         <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                             class="rating-link" style="text-decoration: none;">
-                            <span class="rating-highlight"
-                                style="display: inline-block; cursor: pointer; transition: 0.2s;">
-                                <i class="fas fa-star"></i> 5.0 · 885 оценок
-                            </span>
+                            <span class="rating-highlight"><i class="fas fa-star"></i> 5.0 · 885 оценок</span>
                         </a>
                         <span
                             style="background: #eaffdd; color:#1a471a; padding: 5px 15px; border-radius: 40px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
                             <img src="photos/Яндекс.png" alt="Яндекс"
-                                style="height: 20px; width: auto; vertical-align: middle;">
-                            «Хорошее место» 2026
+                                style="height: 20px; width: auto; vertical-align: middle;"> «Хорошее место» 2026
                         </span>
                         <span
                             style="background: #eaffdd; color:#1a471a; padding: 5px 15px; border-radius: 40px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
                             <img src="photos/Яндекс.png" alt="Яндекс"
-                                style="height: 20px; width: auto; vertical-align: middle;">
-                            «Хорошее место» 2025
+                                style="height: 20px; width: auto; vertical-align: middle;"> «Хорошее место» 2025
                         </span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Что есть -->
+        <!-- О нас -->
         <section id="about">
             <div class="container">
                 <div class="section-title">Тихое раздолье у воды</div>
                 <div
                     style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; line-height: 1.5;">
-                    Песчаный пляж, беседки с мангалом, уютные домики и волейбольная площадка.
-                    Турбаза работает круглый год. Идеально для семьи, друзей и романтических выходных.
+                    Песчаный пляж, беседки с мангалом, уютные домики и волейбольная площадка. Турбаза работает круглый
+                    год. Идеально для семьи, друзей и романтических выходных.
                 </div>
                 <div class="features-list">
                     <div class="feature-item"><i class="fas fa-umbrella-beach"></i> Песчаный пляж</div>
@@ -897,7 +889,7 @@
             </div>
         </section>
 
-        <!-- Домики и беседки -->
+        <!-- Домики -->
         <section id="accommodation">
             <div class="container">
                 <div class="section-title">Наши домики и беседки</div>
@@ -914,7 +906,7 @@
                         <img class="card-img" src="photos/лофт.jpg" alt="Лофт">
                         <div class="card-content">
                             <h3>Беседка «Лофт»</h3>
-                            <p>Вмещает до 35 человек, свет, мангал, столики. </p>
+                            <p>Вмещает до 35 человек, свет, мангал, столики.</p>
                             <div class="badge">от 13 000 ₽</div>
                         </div>
                     </div>
@@ -942,35 +934,29 @@
             </div>
         </section>
 
-        <!-- Видео о нас -->
+        <!-- Видео -->
         <section id="video" style="background: #ecf5e4;">
             <div class="container">
                 <h2 class="section-title" style="text-align: center; width: 100%;">Видео о нас</h2>
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                    <!-- 1 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
                             <video controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
                                 <source src="photos/Видео1.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
                             </video>
                         </div>
                     </div>
-                    <!-- 2 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
                             <video controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
                                 <source src="photos/Видео2.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
                             </video>
                         </div>
                     </div>
-                    <!-- 3 видео -->
                     <div style="flex: 0 1 320px;">
                         <div class="video-container">
                             <video controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
                                 <source src="photos/Видео3.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
                             </video>
                         </div>
                     </div>
@@ -987,10 +973,8 @@
                 <div style="text-align: center; margin-bottom: 40px;">
                     <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                         class="rating-link" style="text-decoration: none;">
-                        <span class="rating-highlight"
-                            style="background: #588c3e; color:white; display: inline-block; cursor: pointer; transition: 0.2s;">
-                            <i class="fas fa-star"></i> 5.0 из 5 · 885 оценок на Яндекс.Картах
-                        </span>
+                        <span class="rating-highlight" style="background: #588c3e; color:#fff;"><i
+                                class="fas fa-star"></i> 5.0 из 5 · 885 оценок на Яндекс.Картах</span>
                     </a>
                     <p style="margin-top: 12px;">"Чистота, ухоженная территория, красивый пляж и доброжелательный
                         персонал"</p>
@@ -999,11 +983,9 @@
                     <div class="review-card">
                         <div class="stars">★★★★★</div>
                         <div class="review-text">«Мы отлично отдохнули. Большая беседка вместила весь наш класс и
-                            родителей, тесно никому не было.
-                            <p>Есть зелёные лужайки для игры, фото зоны, залив, можно покататься на моторных лодках.</p>
-                            <p>Можно ни только активно отдохнуть, но и просто
-                                покачаться на качелях и послушать тишину»</p>
-                        </div>
+                            родителей, тесно никому не было. Есть зелёные лужайки для игры, фото зоны, залив, можно
+                            покататься на моторных лодках. Можно не только активно отдохнуть, но и просто покачаться на
+                            качелях и послушать тишину»</div>
                         <div class="review-author">— Ирина Лаптева, Камышин</div>
                         <div class="review-date">1 июня 2026</div>
                     </div>
@@ -1018,11 +1000,10 @@
                     <div class="review-card">
                         <div class="stars">★★★★★</div>
                         <div class="review-text">«Отличная база отдыха! Шикарно оформленная территория, озеленение и
-                            беседки - на высшем уровне! Чистая территория, отличный песчаный пляж. На
-                            территории турбазы есть детская площадка, качели. Чистые оборудованные санузлы.
-                            <p>Если не привезли мангал, угли, шампура — всё предоставят на месте.</p>
-                            <p>Хорошее обслуживание. Приветливый, дружелюбный персонал.»</p>
-                        </div>
+                            беседки — на высшем уровне! Чистая территория, отличный песчаный пляж. На территории турбазы
+                            есть детская площадка, качели. Чистые оборудованные санузлы. Если не привезли мангал, угли,
+                            шампура — всё предоставят на месте. Хорошее обслуживание. Приветливый, дружелюбный
+                            персонал.»</div>
                         <div class="review-author">— Валентина, Камышин</div>
                         <div class="review-date">19 июня 2024</div>
                     </div>
@@ -1030,13 +1011,13 @@
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px;">
                     <div class="award-badge"
                         style="width: fit-content; display: inline-flex; align-items: center; gap: 10px;">
-                        <img src="photos/Яндекс.png" alt="Яндекс" style="height: 24px; width: auto;">
-                        Лауреат премии «Хорошее место» от Яндекс Карт — 2026
+                        <img src="photos/Яндекс.png" alt="Яндекс" style="height: 24px; width: auto;"> Лауреат премии
+                        «Хорошее место» от Яндекс Карт — 2026
                     </div>
                     <div class="award-badge"
                         style="width: fit-content; display: inline-flex; align-items: center; gap: 10px;">
-                        <img src="photos/Яндекс.png" alt="Яндекс" style="height: 24px; width: auto;">
-                        Лауреат премии «Хорошее место» от Яндекс Карт — 2025
+                        <img src="photos/Яндекс.png" alt="Яндекс" style="height: 24px; width: auto;"> Лауреат премии
+                        «Хорошее место» от Яндекс Карт — 2025
                     </div>
                 </div>
             </div>
@@ -1048,16 +1029,36 @@
                 <div class="section-title">Как нас найти</div>
                 <div class="contact-flex">
                     <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> <strong>Адрес:</strong> Волгоградская область, г.
-                            Камышин, Рязано-Уральская улица, 2</p>
-                        <p><i class="fas fa-phone-alt"></i> <strong>Телефоны:</strong> <a href="tel:+79889594135"
-                                style="color:#4a8430;">+7 (988) 959-41-35</a> , <a href="tel:+79044187087"
-                                style="color:#4a8430;">+7 (904) 418-70-87</a></p>
-                        <p><i class="fas fa-clock"></i> <strong>Время работы:</strong> Ежедневно с 10:00 до 23:00</p>
-                        <p><i class="fab fa-vk"></i> <strong>Мы ВКонтакте:</strong> <a
-                                href="https://vk.com/baza_otdixa_rasdolje" target="_blank"
-                                style="color:#4a8430; font-weight:500;">vk.com/baza_otdixa_rasdolje</a></p>
-                        <p><i class="fas fa-paw"></i> <strong>Животные запрещены.</strong></p>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="contact-label">Адрес:</span>
+                            <span class="contact-value">Волгоградская область, г. Камышин, Рязано-Уральская улица,
+                                2</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span class="contact-label">Телефоны:</span>
+                            <span class="contact-value">
+                                <a href="tel:+79889594135">+7 (988) 959-41-35</a>,
+                                <a href="tel:+79044187087">+7 (904) 418-70-87</a>
+                            </span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span class="contact-label">Время работы:</span>
+                            <span class="contact-value">Ежедневно с 10:00 до 23:00</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-vk"></i>
+                            <span class="contact-label">Мы ВКонтакте:</span>
+                            <span class="contact-value"><a href="https://vk.com/baza_otdixa_rasdolje"
+                                    target="_blank">vk.com/baza_otdixa_rasdolje</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-paw"></i>
+                            <span class="contact-label">Животные:</span>
+                            <span class="contact-value" style="color:#c0392b;">запрещены</span>
+                        </div>
                         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
                             <a href="tel:+79889594135" class="btn-primary"
                                 style="padding: 10px 20px; font-size: 0.95rem; white-space: nowrap;"><i
@@ -1068,21 +1069,21 @@
                             <a href="https://max.ru/u/217665266" target="_blank" class="btn-primary"
                                 style="padding: 10px 20px; font-size: 0.95rem; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
                                 <img src="photos/MAX-logo.jpg" alt="MAX"
-                                    style="height: 20px; width: auto; vertical-align: middle;">Забронировать в MAX</a>
+                                    style="height: 20px; width: auto; vertical-align: middle;"> Забронировать в MAX
+                            </a>
                         </div>
                     </div>
                     <div class="map-placeholder">
                         <iframe
                             src="https://yandex.ru/map-widget/v1/?ll=45.387209%2C50.097385&z=15&pt=45.387209%2C50.097385~ymapsbm1%3A%2F%2Forg%3Foid%3D114323937885"
                             width="100%" height="320" frameborder="0" allowfullscreen="true"
-                            style="border-radius: 24px; display: block; border: none;">
-                        </iframe>
+                            style="border-radius: 24px; display: block; border: none;"></iframe>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Остались вопросы -->
+        <!-- Вопросы -->
         <section id="questions" style="background: #f1f8ea; padding: 60px 0;">
             <div class="container">
                 <div class="section-title" style="margin-bottom: 30px;">Остались вопросы? Пишите нам!</div>
@@ -1105,34 +1106,35 @@
                     </a>
                 </div>
                 <p
-                    style="text-align: center; max-width: 600px; margin: auto; color: #3a4a33; font-size: 1.5rem;  margin-top: 50px;">
+                    style="text-align: center; max-width: 600px; margin: auto; color: #3a4a33; font-size: 1.5rem; margin-top: 50px;">
                     Теперь мы в TikTok!
                 </p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 20px">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 20px;">
                     <a href="https://www.tiktok.com/@razdolie_kam" target="_blank" class="btn-primary"
-                        style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; width: auto; max-width: 100%;">
-                        <i class="fab fa-tiktok"></i> <span class="desktop-text">Открыть TikTok</span><span
-                            class="mobile-text">TikTok</span>
+                        style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; margin: 0 auto;">
+                        <i class="fab fa-tiktok"></i> Открыть TikTok
                     </a>
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- ===== ПОДВАЛ ===== -->
     <footer>
-        <!-- Концовка -->
         <div class="container">
             <p>База отдыха «Раздолье» — настоящий отдых на берегу Камышинки.</p>
             <p style="margin: 16px 0;">📍 Волгоградская область, г. Камышин, Рязано-Уральская улица, 2</p>
             <p style="margin: 16px 0;">☎️ +7 (988) 959-41-35 ; +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2026 База отдыха «Раздолье» | Работаем для вас круглый год</p>
-            <p style="font-size: 0.9rem; margin: 16px 0">Обновление 08.07.2026</p>
+            <p style="font-size: 0.9rem; margin: 16px 0;">Обновление 08.07.2026</p>
         </div>
     </footer>
 
+    <!-- ===== СКРИПТЫ ===== -->
     <script>
-        // Логика для слайд-шоу
+        // Слайд-шоу
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slideshow-bg img');
 
@@ -1148,7 +1150,7 @@
             setTimeout(showSlides, 10000);
         }
 
-        // Обработчик для логотипа
+        // Логотип: если не загрузился — скрываем
         const logoImg = document.querySelector('.logo-img');
         if (logoImg) {
             logoImg.onerror = function () {
@@ -1158,6 +1160,7 @@
             };
         }
     </script>
+
 </body>
 
 </html>
