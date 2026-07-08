@@ -71,13 +71,13 @@
             color: #c9e24b;
         }
 
-        /* Навигация — на компьютере всё в строку, на телефоне в две */
+        /* Навигация */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: flex-end;
-            gap: 12px;
+            gap: 8px;
         }
 
         .nav-links a {
@@ -85,8 +85,9 @@
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             padding: 6px 12px;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -296,7 +297,23 @@
             margin-top: 40px;
         }
 
-        /* Телефоны: нав кнопки в две строки */
+        /* На компьютере — всё в одной строке */
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 8px;
+            }
+
+            .nav-main,
+            .nav-secondary {
+                display: inline-flex;
+                gap: 8px;
+            }
+        }
+
+        /* На телефонах — две строки, кнопки по центру */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -313,7 +330,7 @@
                 gap: 8px;
             }
 
-            .nav-links .nav-main {
+            .nav-main {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
@@ -322,7 +339,7 @@
                 order: 1;
             }
 
-            .nav-links .nav-secondary {
+            .nav-secondary {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
@@ -361,12 +378,15 @@
 <body>
 
     <header>
+        <!-- Навигация -->
         <div class="container">
             <div class="navbar">
                 <div class="logo-area">
                     <img class="logo-img" src="photos/logo.png" alt="Логотип Раздолье"
-                        onerror="this.style.display='none'">
+                        onerror="this.onerror=null; this.style.display='none'; document.getElementById('fallbackText').style.display='flex';">
                     <div class="logo-text">Раздолье</div>
+                    <div id="fallbackText" style="display: none; font-size: 1.6rem; font-weight:800; color:#e9f5db;">
+                        Раздолье</div>
                 </div>
                 <div class="nav-links">
                     <div class="nav-main">
@@ -377,13 +397,16 @@
                         <a href="index.html#contacts">Контакты</a>
                     </div>
                     <div class="nav-secondary">
-                        <a href="https://web.max.ru/217665266" target="_blank" class="btn-outline-green"
+                        <a href="https://max.ru/u/217665266" target="_blank" class="btn-outline-green"
                             style="display: inline-flex; align-items: center; gap: 6px">
                             <img src="photos/MAX-logo.jpg" alt="MAX"
-                                style="height: 16px; width: auto; vertical-align: middle;">MAX</a>
+                                style="height: 16px; width: auto; vertical-align: middle;">
+                            MAX
+                        </a>
                         <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green"><i
                                 class="fab fa-vk"></i> VK</a>
-                        <a href="tel:+79889594135" class="btn-outline-green"><i class="fas fa-phone-alt"></i> Позвонить</a>
+                        <a href="tel:+79889594135" class="btn-outline-green"><i class="fas fa-phone-alt"></i>
+                            Позвонить</a>
                     </div>
                 </div>
             </div>
@@ -391,12 +414,13 @@
     </header>
 
     <main>
+        <!-- Надпись -->
         <div class="container">
             <h1 class="page-title">📋 Наши цены — 2026</h1>
             <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;"><b>Актуальные цены аренды с 1 апреля
                     2026</b>
             </p>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;"><b>Вход на територию</b> (без аренды
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;"><b>Вход на территорию</b> (без аренды
                 беседки/домика) 400 ₽-взрослый</p>
             <p style="text-align: center; max-width: 700px; margin: 0 auto 20px;">Дети с 7 до 14 лет — 50% от стоимости
                 взрослого.</p>
@@ -419,6 +443,7 @@
     </main>
 
     <footer>
+        <!-- Концовка -->
         <div class="container">
             <p>База отдыха «Раздолье» — Камышин, Рязано-Уральская, 2</p>
             <p style="margin-top: 12px;"><a href="https://vk.com/baza_otdixa_rasdolje" target="_blank"
@@ -428,6 +453,7 @@
     </footer>
 
     <script>
+        // Фото
         const items = [
             {
                 name: "Беседка 1", price: "10 000 ₽", priceNote: "/ сутки", capacity: "до 20 человек",
@@ -535,11 +561,11 @@
                 name: "SUP-борды", price: "--- ₽", priceNote: "/ - час", capacity: "до 2 человека",
                 desc: "Наплывные сапборды для прогулок по реке Камышинке. Идеально для активного отдыха, йоги на воде и фотосессий.",
                 features: ["Спасательные жилеты", "Весло", "Инструктаж"],
-                photos: ["photos/сап.jpg", "photos/сап1.jpg", "photos/сап2.jpg", "photos/сап3.jpg"]
+                photos: ["photos/сап1.jpg", "photos/сап2.jpg", "photos/сап3.jpg", "photos/сап4.jpg"]
             }
         ];
 
-        // Функция для получения реального URL фото или заглушки
+        // URL фото или заглушки
         function getPhotoUrl(photoPath, cardName, photoIndex) {
             if (photoPath && photoPath !== "") {
                 return photoPath;
