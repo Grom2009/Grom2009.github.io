@@ -742,6 +742,20 @@
                 font-size: 0.75rem;
             }
         }
+
+        .mobile-text {
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .desktop-text {
+                display: none;
+            }
+
+            .mobile-text {
+                display: inline;
+            }
+        }
     </style>
 </head>
 
@@ -1096,8 +1110,9 @@
                 </p>
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 20px">
                     <a href="https://www.tiktok.com/@razdolie_kam" target="_blank" class="btn-primary"
-                        style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px;">
-                        <i class="fab fa-tiktok"></i> Открыть TikTok
+                        style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; width: auto; max-width: 100%;">
+                        <i class="fab fa-tiktok"></i> <span class="desktop-text">Открыть TikTok</span><span
+                            class="mobile-text">TikTok</span>
                     </a>
                 </div>
             </div>
