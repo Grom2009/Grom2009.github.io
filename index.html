@@ -32,7 +32,7 @@
             z-index: 2;
         }
 
-        /* ===== ШАПКА ===== */
+        /* Шапка */
         header {
             background: #0f2b0f;
             box-shadow: 0 6px 18px rgba(0, 20, 0, 0.2);
@@ -78,7 +78,7 @@
             color: #c9e24b;
         }
 
-        /* ===== НАВИГАЦИЯ ===== */
+        /* Навигация */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -185,7 +185,7 @@
             }
         }
 
-        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
+        /* Главный экран */
         .hero {
             position: relative;
             min-height: 90vh;
@@ -259,7 +259,7 @@
             margin-top: 20px;
         }
 
-        /* ===== КНОПКИ ===== */
+        /* Кнопки */
         .btn-primary {
             background: linear-gradient(135deg, #7cb45e, #5f9e4b);
             padding: 12px 24px;
@@ -281,7 +281,7 @@
             color: #fff;
         }
 
-        /* ===== СЕКЦИИ ===== */
+        /* Секции */
         section {
             padding: 80px 0;
         }
@@ -306,7 +306,7 @@
             border-radius: 4px;
         }
 
-        /* ===== СЕТКИ ===== */
+        /* Сетки */
         .grid-3,
         .grid-4 {
             display: grid;
@@ -314,7 +314,7 @@
             gap: 32px;
         }
 
-        /* ===== КАРТОЧКИ ===== */
+        /* Карточки */
         .card {
             background: #fff;
             border-radius: 28px;
@@ -363,7 +363,6 @@
             margin-top: 14px;
         }
 
-        /* ===== ФИЧИ ===== */
         .features-list {
             display: flex;
             flex-wrap: wrap;
@@ -390,7 +389,7 @@
             color: #5b9e3a;
         }
 
-        /* ===== ОТЗЫВЫ ===== */
+        /* Отзывы */
         .review-card {
             background: #fff;
             padding: 28px;
@@ -452,7 +451,7 @@
             transform: scale(1.02);
         }
 
-        /* ===== ВИДЕО ===== */
+        /* Видео */
         .video-container {
             position: relative;
             width: 100%;
@@ -483,7 +482,7 @@
             }
         }
 
-        /* ===== КОНТАКТЫ ===== */
+        /* Контакты */
         .contact-flex {
             display: flex;
             flex-wrap: wrap;
@@ -549,7 +548,7 @@
             border: 0;
         }
 
-        /* ===== ПОДВАЛ ===== */
+        /* Подвал */
         footer {
             background: #0f2b0f;
             color: #e2f0d3;
@@ -580,7 +579,7 @@
             color: #0f2b0f;
         }
 
-        /* ===== АДАПТИВ ===== */
+        /* Адаптив */
         @media (max-width: 970px) {
             .hero h1 {
                 font-size: 2.7rem;
@@ -758,7 +757,7 @@
 
 <body>
 
-    <!-- ===== ШАПКА ===== -->
+    <!-- Шапка -->
     <header>
         <div class="container">
             <div class="navbar">
@@ -796,10 +795,10 @@
         </div>
     </header>
 
-    <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+    <!-- Основной контент -->
     <main>
 
-        <!-- Hero -->
+        <!-- Заставка -->
         <div class="hero">
             <div class="slideshow-bg">
                 <img src="photos/fon1.jpg" alt="Фон 1" class="active">
@@ -872,7 +871,7 @@
                     <div class="card">
                         <img class="card-img" src="photos/бес11.jpg" alt="Беседка">
                         <div class="card-content">
-                            <h3><i class="fas fa-tree"></i> Беседки</h3>
+                            <h3><i class="fas fa-home"></i> Беседки</h3>
                             <p>«Лофт», «Красный домик», «Большая беседка» — отапливаемые, с мангалами.</p>
                             <div class="badge">Уют даже зимой</div>
                         </div>
@@ -1120,7 +1119,7 @@
 
     </main>
 
-    <!-- ===== ПОДВАЛ ===== -->
+    <!-- Подвал -->
     <footer>
         <div class="container">
             <p>База отдыха «Раздолье» — настоящий отдых на берегу Камышинки.</p>
@@ -1128,11 +1127,11 @@
             <p style="margin: 16px 0;">☎️ +7 (988) 959-41-35 ; +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2026 База отдыха «Раздолье» | Работаем для вас круглый год</p>
-            <p style="font-size: 0.9rem; margin: 16px 0;">Обновление 08.07.2026</p>
+            <p style="font-size: 0.9rem; margin: 16px 0;">Обновление 13.07.2026</p>
         </div>
     </footer>
 
-    <!-- ===== СКРИПТЫ ===== -->
+    <!-- Скрипты -->
     <script>
         // Слайд-шоу
         let slideIndex = 0;
@@ -1150,7 +1149,7 @@
             setTimeout(showSlides, 10000);
         }
 
-        // Логотип: если не загрузился — скрываем
+        // Логотип
         const logoImg = document.querySelector('.logo-img');
         if (logoImg) {
             logoImg.onerror = function () {
