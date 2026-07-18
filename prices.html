@@ -296,19 +296,19 @@
 
         /* Разные задержки для карточек */
         .animate-on-scroll .price-card:nth-child(1) {
-            transition-delay: 0.1s;
+            transition-delay: 0.5s;
         }
 
         .animate-on-scroll .price-card:nth-child(2) {
-            transition-delay: 0.2s;
+            transition-delay: 0.6s;
         }
 
         .animate-on-scroll .price-card:nth-child(3) {
-            transition-delay: 0.3s;
+            transition-delay: 0.7s;
         }
 
         .animate-on-scroll .price-card:nth-child(4) {
-            transition-delay: 0.4s;
+            transition-delay: 0.8s;
         }
 
         /* На компьютере — всё в одной строке */
@@ -327,17 +327,32 @@
             }
         }
 
-        /* На телефонах — две строки, кнопки по центру */
-        @media (max-width: 768px) {
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 1030px) {
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
             .navbar {
                 flex-direction: column;
             }
 
             .logo-area {
-                width: 100%;
                 justify-content: center;
+                width: 100%;
             }
 
+            .contact-flex {
+                gap: 24px;
+                padding: 24px 20px;
+            }
+        }
+
+        @media (max-width: 770px) {
             .nav-links {
                 flex-direction: column;
                 align-items: center;
@@ -348,40 +363,42 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 6px;
+                gap: 8px;
                 width: 100%;
-                order: 1;
             }
 
             .nav-secondary {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 6px;
+                gap: 8px;
                 width: 100%;
-                order: 2;
             }
 
             .nav-links a {
-                font-size: 0.7rem;
-                padding: 4px 8px;
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .nav-main,
+            .nav-secondary {
+                gap: 7px;
             }
 
-            .btn-outline-green {
-                padding: 4px 8px;
-            }
-
-            .price-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .slider-container {
-                aspect-ratio: 4 / 5;
+            .nav-main a,
+            .nav-secondary a {
+                font-size: 0.8rem;
+                padding: 5px 9px;
             }
         }
 
         @media (max-width: 480px) {
-            .nav-links a {
+
+            .nav-main a,
+            .nav-secondary a {
                 font-size: 0.65rem;
                 padding: 4px 6px;
             }
@@ -403,6 +420,61 @@
             .phones-line {
                 flex-direction: column;
                 gap: 4px;
+            }
+        }
+
+        @media (max-width: 536px) {
+            .page-title {
+                font-size: 2rem !important;
+            }
+        }
+
+        @media (max-width: 442px) {
+            .page-title {
+                font-size: 1.9rem !important;
+            }
+        }
+
+        @media (max-width: 423px) {
+            .page-title {
+                font-size: 1.8rem !important;
+            }
+        }
+
+        @media (max-width: 405px) {
+            .page-title {
+                font-size: 1.7rem !important;
+            }
+        }
+
+        @media (max-width: 385px) {
+            .page-title {
+                font-size: 1.6rem !important;
+            }
+        }
+
+        @media (max-width: 366px) {
+            .page-title {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .price-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 !important;
+                margin: 20px 0 !important;
+            }
+
+            .price-card {
+                width: 100% !important;
+                margin: 0 auto !important;
+                box-sizing: border-box;
+            }
+
+            .slider-container {
+                aspect-ratio: 4 / 5 !important;
             }
         }
     </style>

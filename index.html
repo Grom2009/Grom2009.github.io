@@ -131,7 +131,7 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 830px) {
             .nav-links {
                 flex-direction: column;
                 align-items: center;
@@ -155,8 +155,8 @@
             }
 
             .nav-links a {
-                font-size: 0.75rem;
-                padding: 5px 10px;
+                font-size: 0.85rem;
+                padding: 6px 10px;
             }
         }
 
@@ -164,13 +164,13 @@
 
             .nav-main,
             .nav-secondary {
-                gap: 6px;
+                gap: 7px;
             }
 
             .nav-main a,
             .nav-secondary a {
-                font-size: 0.7rem;
-                padding: 4px 8px;
+                font-size: 0.8rem;
+                padding: 5px 9px;
             }
         }
 
@@ -606,7 +606,7 @@
         }
 
         /* ===== АДАПТИВ ===== */
-        @media (max-width: 970px) {
+        @media (max-width: 1085px) {
             .hero h1 {
                 font-size: 2.7rem;
             }
@@ -750,7 +750,7 @@
             }
 
             .award-badge {
-                padding: 12px 20px;
+                padding: 12px 26px;
             }
         }
 
@@ -779,6 +779,57 @@
                 padding-left: 0;
                 font-size: 1rem;
                 flex: 1;
+            }
+        }
+
+        @media (max-width: 615px) {
+            .award-badge {
+                font-size: 0.9rem !important;
+                padding: 8px 12px !important;
+            }
+        }
+
+        @media (min-width: 655px) and (max-width: 967px) {
+            .grid-3 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+            }
+
+            .grid-3 .card:last-child {
+                grid-column: 1 / -1;
+                max-width: 50%;
+                justify-self: center;
+            }
+
+            .grid-3 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+            }
+
+            .grid-3 .card:last-child,
+            .grid-3 .review-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 50%;
+                justify-self: center;
+            }
+        }
+
+        @media (min-width: 967px) and (max-width: 1279px) {
+            .grid-4 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                justify-items: center;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .grid-4 .card {
+                max-width: 340px;
+                width: 100%;
             }
         }
     </style>
@@ -866,7 +917,7 @@
                         style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-start;">
                         <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                             class="rating-link" style="text-decoration: none;">
-                            <span class="rating-highlight"><i class="fas fa-star"></i> 5.0 · 892 оценок</span>
+                            <span class="rating-highlight"><i class="fas fa-star"></i> 5.0 · 893 оценок</span>
                         </a>
                         <span
                             style="background: #eaffdd; color:#1a471a; padding: 5px 15px; border-radius: 40px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
@@ -1029,7 +1080,7 @@
                     <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                         class="rating-link" style="text-decoration: none;">
                         <span class="rating-highlight" style="background: #588c3e; color:#fff;"><i
-                                class="fas fa-star"></i> 5.0 из 5 · 892 оценок на Яндекс.Картах</span>
+                                class="fas fa-star"></i> 5.0 из 5 · 893 оценок на Яндекс.Картах</span>
                     </a>
                     <p style="margin-top: 12px;">"Чистота, ухоженная территория, красивый пляж и доброжелательный
                         персонал"</p>
