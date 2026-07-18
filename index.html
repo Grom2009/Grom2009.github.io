@@ -832,6 +832,68 @@
                 width: 100%;
             }
         }
+
+        @media (max-width: 509px) {
+            #stat-modal {
+                flex-direction: column !important;
+                gap: 12px !important;
+                padding: 16px 20px !important;
+                max-width: 92% !important;
+                text-align: center;
+            }
+
+            #stat-modal button {
+                width: auto !important;
+                padding: 8px 24px !important;
+                font-size: 0.85rem !important;
+                align-self: center;
+            }
+        }
+
+        @media (max-width: 580px) {
+            #stat-modal {
+                width: 92% !important;
+                max-width: 92% !important;
+                min-width: 0 !important;
+                padding: 14px 18px !important;
+            }
+
+            #stat-modal div:first-of-type {
+                font-size: 1rem !important;
+            }
+
+            #stat-modal div:nth-of-type(2) {
+                font-size: 0.85rem !important;
+            }
+
+            #stat-modal button {
+                font-size: 0.85rem !important;
+                padding: 6px 24px !important;
+            }
+        }
+
+        @media (max-width: 580px) {
+            #stat-modal {
+                width: 92% !important;
+                max-width: 92% !important;
+                min-width: 0 !important;
+                padding: 16px 20px !important;
+            }
+
+            #stat-modal div:first-of-type {
+                font-size: 1rem !important;
+            }
+
+            #stat-modal div:nth-of-type(2) {
+                font-size: 0.85rem !important;
+            }
+
+            #stat-modal button {
+                font-size: 0.85rem !important;
+                padding: 8px 24px !important;
+                width: 100% !important;
+            }
+        }
     </style>
 
     <!-- Yandex.Metrika counter -->
@@ -843,7 +905,10 @@
             k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
         })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=110847285', 'ym');
 
-        ym(110847285, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+        ym(110847285, 'init', {
+            ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document
+                .referrer, url: location.href, accurateTrackBounce: true, trackLinks: true
+        });
     </script>
     <noscript>
         <div><img src="https://mc.yandex.ru/watch/110847285" style="position:absolute; left:-9999px;" alt="" /></div>
@@ -964,8 +1029,7 @@
                         <div class="card-content">
                             <h3><i class="fas fa-swimmer"></i> Пляж</h3>
                             <p>Песчаный пляж на берегу Камышинки с пологим входом — безопасно для детей и взрослых.
-                                Чистый песок и
-                                лежаки. Можно купаться, загорать или просто сидеть у воды.</p>
+                                Чистый песок и лежаки. Можно купаться, загорать или просто сидеть у воды.</p>
                             <div class="badge">Идеально для семей</div>
                         </div>
                     </div>
@@ -1246,6 +1310,45 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Уведомление о статистике -->
+    <div id="stat-modal"
+        style="position:fixed; bottom:25px; left:50%; transform:translateX(-50%); background:rgba(30,30,30,0.88); backdrop-filter:blur(6px); color:#fff; padding:18px 26px; border-radius:16px; z-index:9999; display:none; flex-direction:column; align-items:center; gap:12px; width:fit-content; max-width:90%; min-width:260px; box-shadow:0 8px 28px rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.08); font-size:0.95rem; line-height:1.5;">
+        <div
+            style="font-size:1.15rem; font-weight:700; color:#ffdd99; text-align:center; width:100%; letter-spacing:0.5px;">
+            Предупреждение
+        </div>
+        <div style="text-align:center; width:100%;">
+            Мы собираем статистику через Яндекс.Метрику, чтобы делать сайт лучше и удобнее для вас.
+        </div>
+        <button
+            onclick="document.getElementById('stat-modal').style.display='none'; sessionStorage.setItem('statShown','true');"
+            style="background:#7cb45e; color:#fff; border:none; padding:8px 28px; border-radius:40px; font-weight:600; cursor:pointer; font-size:0.9rem; margin-top:4px;">
+            Хорошо
+        </button>
+    </div>
+
+    <script>
+        if (!sessionStorage.getItem('statShown')) {
+            document.getElementById('stat-modal').style.display = 'flex';
+            sessionStorage.setItem('statShown', 'true');
+        }
+    </script>
+
+    <script>
+        if (!sessionStorage.getItem('statShown')) {
+            document.getElementById('stat-modal').style.display = 'flex';
+            sessionStorage.setItem('statShown', 'true');
+        }
+    </script>
+
+    <script>
+        (function () {
+            if (!localStorage.getItem('statAccepted')) {
+                document.getElementById('stat-modal').style.display = 'flex';
+            }
+        })();
+    </script>
+
     <!-- ===== СКРИПТЫ ===== -->
     <script>
         // Слайд-шоу
@@ -1318,9 +1421,16 @@
                 // Запасной вариант для компьютеров
                 var url = 'https://razdolie-kam.ru';
                 var text = 'Отличное место для отдыха в Камышине!';
-                window.open('https://vk.com/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(text), '_blank');
+                window.open('https://vk.com/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(
+                    text), '_blank');
             }
         });
+
+        // Показываем уведомление только один раз за сессию (пока что не работает)
+        if (!sessionStorage.getItem('statShown')) {
+            document.getElementById('stat-modal').style.display = 'flex';
+            sessionStorage.setItem('statShown', 'true');
+        }
     </script>
 
 </body>
