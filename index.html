@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* ===== ОБНУЛЕНИЕ ===== */
+        /* ===== ОБНУЛЕНИЕ И ОСНОВНЫЕ СТИЛИ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -32,7 +32,7 @@
             z-index: 2;
         }
 
-        /* ===== ШАПКА ===== */
+        /* ===== ШАПКА И НАВИГАЦИЯ ===== */
         header {
             background: #0f2b0f;
             box-shadow: 0 6px 18px rgba(0, 20, 0, 0.2);
@@ -78,7 +78,6 @@
             color: #c9e24b;
         }
 
-        /* ===== НАВИГАЦИЯ ===== */
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -279,7 +278,7 @@
             color: #fff;
         }
 
-        /* ===== СЕКЦИИ ===== */
+        /* ===== СЕКЦИИ И ЗАГОЛОВКИ ===== */
         section {
             padding: 80px 0;
         }
@@ -302,6 +301,57 @@
             background: #8fc96b;
             margin: 16px auto 0;
             border-radius: 4px;
+        }
+
+        /* ===== СЛАЙДЕРЫ В КАРТОЧКАХ ИНФРАСТРУКТУРЫ ===== */
+        .card-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px 28px 0 0;
+            aspect-ratio: 16 / 10;
+            background: #2a3d24;
+        }
+
+        .card-slider .slider-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+            height: 100%;
+        }
+
+        .card-slider .slider-track img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .card-slider .slider-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .card-slider .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            transition: 0.3s;
+        }
+
+        .card-slider .slider-dot.active {
+            background: #5f9e4b;
+            width: 24px;
+            border-radius: 10px;
         }
 
         /* ===== СЕТКИ ===== */
@@ -387,13 +437,58 @@
             color: #5b9e3a;
         }
 
-        /* ===== ОТЗЫВЫ ===== */
+        /* ===== ОТЗЫВЫ И ПРЕМИИ ===== */
+        .reviews-slider {
+            overflow: hidden;
+            border-radius: 32px;
+        }
+
+        .reviews-slider .slider-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .reviews-slider .slider-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            padding: 0 4px;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .reviews-slider .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .reviews-slider .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #c4d9b6;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            transition: 0.3s;
+        }
+
+        .reviews-slider .slider-dot.active {
+            background: #5f9e4b;
+            width: 24px;
+            border-radius: 10px;
+        }
+
         .review-card {
             background: #fff;
             padding: 28px;
             border-radius: 32px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
             border: 1px solid #d9eaca;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .stars {
@@ -404,10 +499,14 @@
 
         .review-text {
             font-style: italic;
-            font-size: 1rem;
-            line-height: 1.5;
+            font-size: 1.1rem;
+            line-height: 1.6;
             margin-bottom: 16px;
             color: #2a3d24;
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
         }
 
         .review-author {
@@ -429,10 +528,11 @@
             gap: 12px;
             padding: 12px 26px;
             border-radius: 80px;
-            margin: 15px auto 0;
+            margin: auto 0;
             width: fit-content;
             font-weight: 600;
             color: #376d1c;
+            font-size: 1.3rem;
         }
 
         .rating-highlight {
@@ -447,6 +547,48 @@
         .rating-link:hover .rating-highlight {
             background: #2a6b2a !important;
             transform: scale(1.02);
+        }
+
+        .reviews-layout {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .reviews-layout .reviews-slider {
+            flex: 2 1 300px;
+            min-width: 280px;
+            max-width: 700px;
+        }
+
+        .reviews-layout .awards-block {
+            flex: 0 1 auto;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        @media (max-width: 979px) {
+            .reviews-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .reviews-layout .reviews-slider {
+                width: 100%;
+                max-width: 100%;
+                flex: none;
+            }
+
+            .reviews-layout .awards-block {
+                width: 100%;
+                flex: none;
+                align-items: center;
+            }
         }
 
         /* ===== ВИДЕО ===== */
@@ -628,6 +770,11 @@
                 gap: 24px;
                 padding: 24px 20px;
             }
+
+            .award-badge {
+                padding: 12px 26px;
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 898px) {
@@ -669,6 +816,16 @@
             .contact-item .contact-value {
                 padding-left: 32px;
                 font-size: 0.92rem;
+            }
+
+            .reviews-slider .slider-dots {
+                margin-top: 12px;
+            }
+
+            .reviews-slider {
+                max-width: 100%;
+                margin: 0;
+                padding: 0 4px;
             }
         }
 
@@ -749,8 +906,13 @@
                 font-size: 0.85rem;
             }
 
+            .review-text {
+                font-size: 1rem;
+            }
+
             .award-badge {
-                padding: 12px 26px;
+                padding: 12px 23px;
+                gap: 15px;
             }
         }
 
@@ -782,13 +944,6 @@
             }
         }
 
-        @media (max-width: 615px) {
-            .award-badge {
-                font-size: 0.9rem !important;
-                padding: 8px 12px !important;
-            }
-        }
-
         @media (min-width: 655px) and (max-width: 967px) {
             .grid-3 {
                 display: grid;
@@ -800,12 +955,6 @@
                 grid-column: 1 / -1;
                 max-width: 50%;
                 justify-self: center;
-            }
-
-            .grid-3 {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                justify-items: center;
             }
 
             .grid-3 .card:last-child,
@@ -869,6 +1018,24 @@
             #stat-modal button {
                 font-size: 0.85rem !important;
                 padding: 6px 24px !important;
+            }
+        }
+
+        .card-slider .slider-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        /* ===== ДЛЯ ТЕЛЕФОНОВ: квадратные фото ===== */
+        @media (max-width: 768px) {
+
+            .card-slider,
+            .slider-container,
+            .slider-track img,
+            .card-slider,
+            .card-img {
+                aspect-ratio: 1 / 1 !important;
+                object-fit: cover !important;
             }
         }
     </style>
@@ -996,13 +1163,22 @@
             </div>
         </section>
 
-        <!-- Инфраструктура -->
+        <!-- Инфраструктура со слайдерами -->
         <section id="facilities" style="background: #ecf5e4;">
             <div class="container">
                 <div class="section-title">Инфраструктура и развлечения</div>
                 <div class="grid-3">
+                    <!-- Пляж -->
                     <div class="card animate-on-scroll">
-                        <img class="card-img" src="photos/пляж.jpg" alt="Пляж">
+                        <div class="card-slider" id="slider-beach">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/пляж1.jpg" alt="Пляж 1"></div>
+                                <div class="slider-slide"><img src="photos/пляж2.jpg" alt="Пляж 2"></div>
+                                <div class="slider-slide"><img src="photos/пляж3.jpg" alt="Пляж 3"></div>
+                                <div class="slider-slide"><img src="photos/пляж4.jpg" alt="Пляж 4"></div>
+                            </div>
+                            <div class="slider-dots" id="dots-beach"></div>
+                        </div>
                         <div class="card-content">
                             <h3><i class="fas fa-swimmer"></i> Пляж</h3>
                             <p>Песчаный пляж на берегу Камышинки с пологим входом — безопасно для детей и взрослых.
@@ -1010,19 +1186,38 @@
                             <div class="badge">Идеально для семей</div>
                         </div>
                     </div>
+
+                    <!-- Беседки -->
                     <div class="card animate-on-scroll">
-                        <img class="card-img" src="photos/бес11.jpg" alt="Беседка">
+                        <div class="card-slider" id="slider-gazebos">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/бес11.jpg" alt="Беседка 1"></div>
+                                <div class="slider-slide"><img src="photos/зелдом.jpg" alt="Зелёный дом"></div>
+                                <div class="slider-slide"><img src="photos/бес31.jpg" alt="Беседка 3"></div>
+                                <div class="slider-slide"><img src="photos/лофт.jpg" alt="Беседка Лофт"></div>
+                            </div>
+                            <div class="slider-dots" id="dots-gazebos"></div>
+                        </div>
                         <div class="card-content">
                             <h3><i class="fas fa-home"></i> Беседки и домики</h3>
-                            <p>«Лофт» — крытая беседка с вентиляторами. «Красный домик» — отдельный домик с
-                                верандой. «Большая беседка» — для больших компаний. В каждой есть столы, лавочки,
-                                холодильник и
+                            <p>«Лофт» — крытая беседка с вентиляторами. «Красный домик» — отдельный домик с верандой.
+                                «Большая беседка» — для больших компаний. В каждой есть столы, лавочки, холодильник и
                                 мангал.</p>
                             <div class="badge">Подходит для любой компании</div>
                         </div>
                     </div>
+
+                    <!-- Спорт -->
                     <div class="card animate-on-scroll">
-                        <img class="card-img" src="photos/Волейбол.jpg" alt="Волейбол">
+                        <div class="card-slider" id="slider-sport">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/Волейбол.jpg" alt="Волейбол 1"></div>
+                                <div class="slider-slide"><img src="photos/катамаран1.jpg" alt="Катамаран"></div>
+                                <div class="slider-slide"><img src="photos/сап1.jpg" alt="САП-борд"></div>
+                                <div class="slider-slide"><img src="photos/площадка.jpg" alt="качеля"></div>
+                            </div>
+                            <div class="slider-dots" id="dots-sport"></div>
+                        </div>
                         <div class="card-content">
                             <h3><i class="fas fa-volleyball-ball"></i> Спорт и прокат</h3>
                             <p>Волейбольная площадка с сеткой на зелёной травке. Прокат катамаранов и САП-бордов. Можно
@@ -1044,7 +1239,7 @@
                         <div class="card-content">
                             <h3>Красный домик</h3>
                             <p>До 16 гостей. Внутри домика: холодильник, чайник, диван, столик, микроволновка. На
-                                веранде: большой стол и лавочки. Рядом монгальная зона.</p>
+                                веранде: большой стол и лавочки. Рядом мангальная зона.</p>
                             <div class="badge">от 10 000 ₽</div>
                         </div>
                     </div>
@@ -1053,7 +1248,7 @@
                         <div class="card-content">
                             <h3>Беседка «Лофт»</h3>
                             <p>До 35 человек. Есть холодильники, чайник, микроволновка, столы и лавочки, потолочные
-                                вентиляторы. Рядом монгальная зона.</p>
+                                вентиляторы. Рядом мангальная зона.</p>
                             <div class="badge">от 13 000 ₽</div>
                         </div>
                     </div>
@@ -1061,7 +1256,8 @@
                         <img class="card-img" src="photos/болшбес.jpg" alt="Большая беседка">
                         <div class="card-content">
                             <h3>Большая беседка</h3>
-                            <p>До 60 гостей. Оснащена холодильниками, чайником, микроволновка, столами, лавочками. Установлена сплит система и буржуйка. Рядом рукомойники и монгальная зона.</p>
+                            <p>До 60 гостей. Оснащена холодильниками, чайником, микроволновкой, столами, лавочками.
+                                Установлена сплит-система и буржуйка. Рядом рукомойники и мангальная зона.</p>
                             <div class="badge">от 15 000 ₽</div>
                         </div>
                     </div>
@@ -1070,7 +1266,7 @@
                         <div class="card-content">
                             <h3>Пляжный дом</h3>
                             <p>До 25 человек. Внутри столы, лавочки, 2 холодильника, микроволновка, чайник, рукомойник,
-                                сплитсистема.</p>
+                                сплит-система.</p>
                             <div class="badge">от 14 000 ₽</div>
                         </div>
                     </div>
@@ -1127,41 +1323,128 @@
                     <p style="margin-top: 12px;">"Чистота, ухоженная территория, красивый пляж и доброжелательный
                         персонал"</p>
                 </div>
-                <div class="grid-3">
-                    <div class="review-card animate-on-scroll">
-                        <div class="stars">★★★★★</div>
-                        <div class="review-text">«Отдыхали с компанией на турбазе. Были в восторге от радушного приема,
-                            ухоженной территории. Прекрасные клумбы с цветами и отличный пляж. Обязательно приедем еще.»
+
+                <!-- Отзывы + Премии -->
+                <div class="reviews-layout">
+                    <!-- Слайдер отзывов с анимацией -->
+                    <div class="reviews-slider" id="slider-reviews">
+                        <div class="slider-track">
+                            <!-- Каждый отзыв теперь обернут в animate-on-scroll -->
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Отдыхали с компанией на турбазе. Были в восторге от
+                                        радушного приема, ухоженной территории. Прекрасные клумбы с цветами и
+                                        отличный пляж. Обязательно приедем еще.»</div>
+                                    <div class="review-author">— Лукоянова Вера</div>
+                                    <div class="review-date">6 июня 2026</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Замечательные цветы, кустарники и деревья, приятная
+                                        обстановка, отличный пляж, волейбольная площадка с газоном, качели и много
+                                        чего хорошего. Отлично провели время!»</div>
+                                    <div class="review-author">— Алексей Ш.</div>
+                                    <div class="review-date">12 июня 2025</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Отличный отдых, чисто, ухоженная территория. Пляж
+                                        хороший, чистый. Всё для приготовления еды на углях. Для большой компании
+                                        уютно. Рекомендую.»</div>
+                                    <div class="review-author">— Ольга Александровна</div>
+                                    <div class="review-date">22 июня 2026</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Ухоженная территория, хороший пляж, комфортные беседки,
+                                        уютная атмосфера, есть детские площадки, поле поиграть в мяч. Отмечали там дни
+                                        рождения, свадьбу, день выпускника. Очень хорошо!»</div>
+                                    <div class="review-author">— Дегтярева</div>
+                                    <div class="review-date">29 июня 2026</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Отмечали детский выпускной. На базе
+                                        есть абсолютно всё для комфортного отдыха. Если нет
+                                        своего мяча, то можно взять на базе. Угли, дрова
+                                        шампур, всё можно взять на прокат. Сервис просто супер!!!»</div>
+                                    <div class="review-author">— Евгений Р.</div>
+                                    <div class="review-date">3 июня 2025</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Душевное место на берегу реки, красивые закаты, красивая
+                                        растительность, красивое место 👌»</div>
+                                    <div class="review-author">— Евгений С.</div>
+                                    <div class="review-date">22 мая 2026</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Замечательное место, очень красиво, есть беседки и домики
+                                        на разное количество людей, площадка для детей расположена по центру,
+                                        доступна всем домикам. Будем отмечать второй раз там день рождение)»
+                                    </div>
+                                    <div class="review-author">— Мария Калабина</div>
+                                    <div class="review-date">24 июня 2025</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Все чистенько спокойно душа там как дома,персонал
+                                        старается выполняют любые просьбы ,место 10/10
+                                        »</div>
+                                    <div class="review-author">— Елена</div>
+                                    <div class="review-date">21 ноября 2026</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Отличная турбаза. Хорошо отдохнули. Чистые домики,
+                                        пляж, ухоженная территория турбазы, кругом зеленный газон (мягкая трава).»</div>
+                                    <div class="review-author">— Оксана Черненко</div>
+                                    <div class="review-date">27 июля 2025</div>
+                                </div>
+                            </div>
+                            <div class="slider-slide">
+                                <div class="review-card animate-on-scroll">
+                                    <div class="stars">★★★★★</div>
+                                    <div class="review-text">«Прекрасное место для Отдыха. Уютные беседки. Душевный
+                                        персонал. Есть новые катамараны. 😁🏕️👍 Не хочется уезжать.»</div>
+                                    <div class="review-author">— Викуля Андреева</div>
+                                    <div class="review-date">20 сентября 2026</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="review-author">— Лукоянова Вера</div>
-                        <div class="review-date">6 июня 2026</div>
+                        <div class="slider-dots" id="dots-reviews"></div>
                     </div>
-                    <div class="review-card animate-on-scroll">
-                        <div class="stars">★★★★★</div>
-                        <div class="review-text">«Замечательные цветы, кустарники и деревья, приятная обстановка,
-                            отличный пляж, волейбольная площадка с газоном, качели и много чего хорошего. Отлично
-                            провели время!»</div>
-                        <div class="review-author">— Алексей Ш.</div>
-                        <div class="review-date">12 июня 2025</div>
-                    </div>
-                    <div class="review-card animate-on-scroll">
-                        <div class="stars">★★★★★</div>
-                        <div class="review-text">«Отличный отдых, чисто, ухоженная территория. Пляж хороший, чистый. Всё
-                            для приготовления еды на углях. Для большой компании уютно. Рекомендую.»</div>
-                        <div class="review-author">— Ольга Александровна</div>
-                        <div class="review-date">22 июня 2026</div>
-                    </div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 30px;">
-                    <div class="award-badge"
-                        style="width: fit-content; display: inline-flex; align-items: center; gap: 10px;">
-                        <img src="photos/Яндекс.png" alt="📍" style="height: 24px; width: auto;"> Лауреат премии
-                        «Хорошее место» от Яндекс Карт — 2026
-                    </div>
-                    <div class="award-badge"
-                        style="width: fit-content; display: inline-flex; align-items: center; gap: 10px;">
-                        <img src="photos/Яндекс.png" alt="📍" style="height: 24px; width: auto;"> Лауреат премии
-                        «Хорошее место» от Яндекс Карт — 2025
+
+                    <!-- Премии -->
+                    <div class="awards-block">
+                        <div class="award-badge animate-on-scroll">
+                            <img src="photos/Яндекс.png" alt="📍"
+                                style="height: 25px; width: auto; vertical-align: middle;">
+                            «Хорошее место» от Яндекс Карт — 2026
+                        </div>
+                        <div class="award-badge animate-on-scroll">
+                            <img src="photos/Яндекс.png" alt="📍"
+                                style="height: 25px; width: auto; vertical-align: middle;">
+                            «Хорошее место» от Яндекс Карт — 2025
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1277,7 +1560,7 @@
             <p style="margin: 16px 0;">☎️ +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2026 База отдыха «Раздолье» | Работаем для вас круглый год</p>
-            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 20.07.2026</p>
+            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 21.07.2026</p>
         </div>
     </footer>
 
@@ -1304,31 +1587,8 @@
         </button>
     </div>
 
-    <script>
-        if (!sessionStorage.getItem('statShown')) {
-            document.getElementById('stat-modal').style.display = 'flex';
-            sessionStorage.setItem('statShown', 'true');
-        }
-    </script>
-
-    <script>
-        if (!sessionStorage.getItem('statShown')) {
-            document.getElementById('stat-modal').style.display = 'flex';
-            sessionStorage.setItem('statShown', 'true');
-        }
-    </script>
-
-    <script>
-        (function () {
-            if (!localStorage.getItem('statAccepted')) {
-                document.getElementById('stat-modal').style.display = 'flex';
-            }
-        })();
-    </script>
-
     <!-- ===== СКРИПТЫ ===== -->
-    <script>
-        // Слайд-шоу
+    <script>// Слайд-шоу
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slideshow-bg img');
 
@@ -1395,7 +1655,6 @@
                     url: 'https://razdolie-kam.ru'
                 });
             } else {
-                // Запасной вариант для компьютеров
                 var url = 'https://razdolie-kam.ru';
                 var text = 'Отличное место для отдыха в Камышине!';
                 window.open('https://vk.com/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(
@@ -1403,11 +1662,107 @@
             }
         });
 
-        // Показываем уведомление только один раз за сессию (пока что не работает)
-        if (!sessionStorage.getItem('statShown')) {
-            document.getElementById('stat-modal').style.display = 'flex';
-            sessionStorage.setItem('statShown', 'true');
-        }
+        // Уведомление о статистике
+        (function () {
+            if (!sessionStorage.getItem('statShown')) {
+                document.getElementById('stat-modal').style.display = 'flex';
+                sessionStorage.setItem('statShown', 'true');
+            }
+        })();
+
+        // ===== ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ (исправлено) =====
+        // Ждём, пока страница полностью загрузится
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                function initSlider(wrapperId, dotsId, interval) {
+                    var wrapper = document.getElementById(wrapperId);
+                    if (!wrapper) {
+                        console.warn('Слайдер не найден:', wrapperId);
+                        return;
+                    }
+                    var track = wrapper.querySelector('.slider-track');
+                    if (!track) {
+                        console.warn('Трек не найден для:', wrapperId);
+                        return;
+                    }
+                    var slides = track.querySelectorAll('.slider-slide');
+                    if (slides.length <= 1) {
+                        console.warn('Меньше 2 слайдов для:', wrapperId);
+                        return;
+                    }
+                    var dotsContainer = document.getElementById(dotsId);
+                    if (!dotsContainer) {
+                        console.warn('Контейнер точек не найден:', dotsId);
+                        return;
+                    }
+                    var currentIndex = 0;
+                    var autoSlide;
+
+                    // Создание точек
+                    slides.forEach(function (_, i) {
+                        var dot = document.createElement('button');
+                        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                        dot.setAttribute('data-index', i);
+                        dot.addEventListener('click', function () { goToSlide(i); });
+                        dotsContainer.appendChild(dot);
+                    });
+
+                    var dots = dotsContainer.querySelectorAll('.slider-dot');
+
+                    function goToSlide(index) {
+                        currentIndex = index;
+                        track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+                        dots.forEach(function (dot, i) {
+                            if (i === currentIndex) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                        resetAutoSlide();
+                    }
+
+                    function nextSlide() {
+                        goToSlide((currentIndex + 1) % slides.length);
+                    }
+
+                    function resetAutoSlide() {
+                        clearInterval(autoSlide);
+                        autoSlide = setInterval(nextSlide, interval);
+                    }
+
+                    // Запуск
+                    resetAutoSlide();
+
+                    // Пауза при наведении
+                    wrapper.addEventListener('mouseenter', function () { clearInterval(autoSlide); });
+                    wrapper.addEventListener('mouseleave', resetAutoSlide);
+
+                    // Свайп на телефонах
+                    var touchStartX = 0;
+                    wrapper.addEventListener('touchstart', function (e) {
+                        touchStartX = e.changedTouches[0].screenX;
+                    });
+                    wrapper.addEventListener('touchend', function (e) {
+                        var touchEndX = e.changedTouches[0].screenX;
+                        var diff = touchStartX - touchEndX;
+                        if (Math.abs(diff) > 50) {
+                            if (diff > 0) {
+                                goToSlide((currentIndex + 1) % slides.length);
+                            } else {
+                                goToSlide((currentIndex - 1 + slides.length) % slides.length);
+                            }
+                        }
+                    });
+                }
+
+                // Запускаем слайдеры
+                initSlider('slider-beach', 'dots-beach', 6000);
+                initSlider('slider-gazebos', 'dots-gazebos', 6100);
+                initSlider('slider-sport', 'dots-sport', 6200);
+                initSlider('slider-reviews', 'dots-reviews', 11000);
+            }, 100);
+        });
     </script>
 
 </body>
