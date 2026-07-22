@@ -308,7 +308,7 @@
             position: relative;
             overflow: hidden;
             border-radius: 28px 28px 0 0;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 4 / 3;
             background: #2a3d24;
         }
 
@@ -359,7 +359,7 @@
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
+            gap: 30px;
         }
 
         /* ===== КАРТОЧКИ ===== */
@@ -380,7 +380,7 @@
         .card-img {
             width: 100%;
             height: auto;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 4 / 3;
             object-fit: cover;
             display: block;
         }
@@ -1126,7 +1126,7 @@
                         style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-start;">
                         <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                             class="rating-link" style="text-decoration: none;">
-                            <span class="rating-highlight"><i class="fas fa-star"></i> 5.0 · 893 оценок</span>
+                            <span class="rating-highlight"><i class="fas fa-star"></i> 5.0 · 895 оценок</span>
                         </a>
                         <span
                             style="background: #eaffdd; color:#1a471a; padding: 5px 15px; border-radius: 40px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
@@ -1167,7 +1167,8 @@
         <section id="facilities" style="background: #ecf5e4;">
             <div class="container">
                 <div class="section-title">Инфраструктура и развлечения</div>
-                <div class="grid-3">
+                <div class="grid-4"><!-- Меняем grid-3 на grid-4, чтобы было 4 колонки -->
+
                     <!-- Пляж -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-beach">
@@ -1194,7 +1195,7 @@
                                 <div class="slider-slide"><img src="photos/бес11.jpg" alt="Беседка 1"></div>
                                 <div class="slider-slide"><img src="photos/зелдом.jpg" alt="Зелёный дом"></div>
                                 <div class="slider-slide"><img src="photos/бес31.jpg" alt="Беседка 3"></div>
-                                <div class="slider-slide"><img src="photos/лофт.jpg" alt="Беседка Лофт"></div>
+                                <div class="slider-slide"><img src="photos/ковбес.jpg" alt="Беседка Лофт"></div>
                             </div>
                             <div class="slider-dots" id="dots-gazebos"></div>
                         </div>
@@ -1207,6 +1208,30 @@
                         </div>
                     </div>
 
+                    <!-- Детская площадка -->
+                    <div class="card animate-on-scroll">
+                        <div class="card-slider" id="slider-playground">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/площадка.jpg" alt="Детская площадка 1">
+                                </div>
+                                <div class="slider-slide"><img src="photos/площадка1.jpg" alt="Детская площадка 2">
+                                </div>
+                                <div class="slider-slide"><img src="photos/площадка2.jpg" alt="Детская площадка 3">
+                                </div>
+                                <div class="slider-slide"><img src="photos/площадка3.jpg" alt="Детская площадка 4">
+                                </div>
+                            </div>
+                            <div class="slider-dots" id="dots-playground"></div>
+                        </div>
+                        <div class="card-content">
+                            <h3><i class="fas fa-child"></i> Детская площадка</h3>
+                            <p>Безопасная и современная детская площадка с качелями, горками и каруселью. Дети могут
+                                играть под присмотром родителей. Отличное место для детей!
+                            </p>
+                            <div class="badge">Для детей всех возрастов</div>
+                        </div>
+                    </div>
+
                     <!-- Спорт -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-sport">
@@ -1214,7 +1239,7 @@
                                 <div class="slider-slide"><img src="photos/Волейбол.jpg" alt="Волейбол 1"></div>
                                 <div class="slider-slide"><img src="photos/катамаран1.jpg" alt="Катамаран"></div>
                                 <div class="slider-slide"><img src="photos/сап1.jpg" alt="САП-борд"></div>
-                                <div class="slider-slide"><img src="photos/площадка.jpg" alt="качеля"></div>
+                                <div class="slider-slide"><img src="photos/Волейбол1.jpg" alt="Волейбол 2"></div>
                             </div>
                             <div class="slider-dots" id="dots-sport"></div>
                         </div>
@@ -1225,17 +1250,30 @@
                             <div class="badge">Снаряжение выдаём</div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
         <!-- Домики -->
+        <!-- Домики -->
         <section id="accommodation">
             <div class="container">
                 <div class="section-title">Наши домики и беседки</div>
                 <div class="grid-4">
+
+                    <!-- Красный домик -->
                     <div class="card animate-on-scroll">
-                        <img class="card-img" src="photos/крдом.jpg" alt="Красный домик">
+                        <div class="card-slider" id="slider-redhouse">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/крдом.jpg" alt="Красный домик 1"></div>
+                                <div class="slider-slide"><img src="photos/крдом1.jpg" alt="Красный домик 2"></div>
+                                <div class="slider-slide"><img src="photos/крдом2.jpg" alt="Красный домик 3"></div>
+                                <div class="slider-slide"><img src="photos/крдом3.jpg" alt="Красный домик 4"></div>
+                                <div class="slider-slide"><img src="photos/крдом4.jpg" alt="Красный домик 5"></div>
+                            </div>
+                            <div class="slider-dots" id="dots-redhouse"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Красный домик</h3>
                             <p>До 16 гостей. Внутри домика: холодильник, чайник, диван, столик, микроволновка. На
@@ -1243,8 +1281,19 @@
                             <div class="badge">от 10 000 ₽</div>
                         </div>
                     </div>
+
+                    <!-- Беседка Лофт -->
                     <div class="card animate-on-scroll">
-                        <img class="card-img" src="photos/лофт.jpg" alt="Беседка Лофт">
+                        <div class="card-slider" id="slider-loft">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/лофт.jpg" alt="Беседка Лофт 1"></div>
+                                <div class="slider-slide"><img src="photos/лофт1.jpg" alt="Беседка Лофт 2"></div>
+                                <div class="slider-slide"><img src="photos/лофт2.jpg" alt="Беседка Лофт 3"></div>
+                                <div class="slider-slide"><img src="photos/лофт3.jpg" alt="Беседка Лофт 4"></div>
+                                <div class="slider-slide"><img src="photos/лофт5.jpg" alt="Беседка Лофт 5"></div>
+                            </div>
+                            <div class="slider-dots" id="dots-loft"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Беседка «Лофт»</h3>
                             <p>До 35 человек. Есть холодильники, чайник, микроволновка, столы и лавочки, потолочные
@@ -1252,24 +1301,47 @@
                             <div class="badge">от 13 000 ₽</div>
                         </div>
                     </div>
+
+                    <!-- Большая беседка -->
                     <div class="card animate-on-scroll">
-                        <img class="card-img" src="photos/болшбес.jpg" alt="Большая беседка">
+                        <div class="card-slider" id="slider-big">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/болшбес.jpg" alt="Большая беседка 1"></div>
+                                <div class="slider-slide"><img src="photos/болшбес1.jpg" alt="Большая беседка 2"></div>
+                                <div class="slider-slide"><img src="photos/болшбес2.jpg" alt="Большая беседка 3"></div>
+                                <div class="slider-slide"><img src="photos/болшбес3.jpg" alt="Большая беседка 4"></div>
+                                <div class="slider-slide"><img src="photos/болшбес4.jpg" alt="Большая беседка 5"></div>
+                            </div>
+                            <div class="slider-dots" id="dots-big"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Большая беседка</h3>
-                            <p>До 60 гостей. Оснащена холодильниками, чайником, микроволновкой, столами, лавочками.
+                            <p>До 60 гостей. Есть холодильник, чайник, микроволновка, столы, лавочки.
                                 Установлена сплит-система и буржуйка. Рядом рукомойники и мангальная зона.</p>
                             <div class="badge">от 15 000 ₽</div>
                         </div>
                     </div>
+
+                    <!-- Пляжный дом -->
                     <div class="card animate-on-scroll">
-                        <img class="card-img" src="photos/плдом.jpg" alt="Пляжный дом">
+                        <div class="card-slider" id="slider-beachhouse">
+                            <div class="slider-track">
+                                <div class="slider-slide"><img src="photos/плдом.jpg" alt="Пляжный дом 1"></div>
+                                <div class="slider-slide"><img src="photos/плдом1.jpg" alt="Пляжный дом 2"></div>
+                                <div class="slider-slide"><img src="photos/плдом2.jpg" alt="Пляжный дом 3"></div>
+                                <div class="slider-slide"><img src="photos/плдом3.jpg" alt="Пляжный дом 4"></div>
+                                <div class="slider-slide"><img src="photos/плдом4.jpg" alt="Пляжный дом 5"></div>
+                            </div>
+                            <div class="slider-dots" id="dots-beachhouse"></div>
+                        </div>
                         <div class="card-content">
                             <h3>Пляжный дом</h3>
                             <p>До 25 человек. Внутри столы, лавочки, 2 холодильника, микроволновка, чайник, рукомойник,
-                                сплит-система.</p>
+                                сплит-система. Просторная мангальная зона.</p>
                             <div class="badge">от 14 000 ₽</div>
                         </div>
                     </div>
+
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
                     <a href="prices.html" class="btn-primary"><i class="fas fa-list"></i> Посмотреть все цены и
@@ -1318,18 +1390,16 @@
                     <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                         class="rating-link" style="text-decoration: none;">
                         <span class="rating-highlight" style="background: #588c3e; color:#fff;"><i
-                                class="fas fa-star"></i> 5.0 из 5 · 893 оценок на Яндекс.Картах</span>
+                                class="fas fa-star"></i> 5.0 из 5 · 895 оценок на Яндекс.Картах</span>
                     </a>
                     <p style="margin-top: 12px;">"Чистота, ухоженная территория, красивый пляж и доброжелательный
                         персонал"</p>
                 </div>
 
-                <!-- Отзывы + Премии -->
                 <div class="reviews-layout">
                     <!-- Слайдер отзывов с анимацией -->
                     <div class="reviews-slider" id="slider-reviews">
                         <div class="slider-track">
-                            <!-- Каждый отзыв теперь обернут в animate-on-scroll -->
                             <div class="slider-slide">
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
@@ -1560,7 +1630,7 @@
             <p style="margin: 16px 0;">☎️ +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2026 База отдыха «Раздолье» | Работаем для вас круглый год</p>
-            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 21.07.2026</p>
+            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 22.07.2026</p>
         </div>
     </footer>
 
@@ -1756,10 +1826,17 @@
                     });
                 }
 
-                // Запускаем слайдеры
-                initSlider('slider-beach', 'dots-beach', 6000);
-                initSlider('slider-gazebos', 'dots-gazebos', 6100);
-                initSlider('slider-sport', 'dots-sport', 6200);
+                // Слайдеры инфраструктур
+                initSlider('slider-beach', 'dots-beach', 5000);
+                initSlider('slider-gazebos', 'dots-gazebos', 5100);
+                initSlider('slider-playground', 'dots-playground', 5200);
+                initSlider('slider-sport', 'dots-sport', 5300);
+                // Слайдеры домиков
+                initSlider('slider-redhouse', 'dots-redhouse', 5000);
+                initSlider('slider-loft', 'dots-loft', 5100);
+                initSlider('slider-big', 'dots-big', 5200);
+                initSlider('slider-beachhouse', 'dots-beachhouse', 5300);
+                // Слайдер отзывов
                 initSlider('slider-reviews', 'dots-reviews', 11000);
             }, 100);
         });
