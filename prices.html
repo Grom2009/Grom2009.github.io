@@ -5,17 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>База отдыха «Раздолье»</title>
-    <meta name="description"
-        content="База отдыха Раздолье в Камышине — песчаный пляж, беседки с мангалом, уютные домики. Бронирование по телефону +7 (904) 418-70-87.">
-    <meta name="keywords" content="база отдыха Раздолье, Камышин, отдых на природе, беседки с мангалом, песчаный пляж">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- Предзагрузка для ускорения -->
-    <link rel="preload" href="photos/fon1.jpg" as="image">
-    <link rel="preload" href="photos/logo.png" as="image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <style>
         * {
@@ -673,6 +664,7 @@
             },
             {
                 name: "Красный домик", price: "от 10 000 ₽", priceNote: "/ день", capacity: "до 16 человек",
+                id: "redhouse",
                 desc: "Уютный домик для отдыха небольшой компанией. Идеально подходит для семейных посиделок и встреч с близкими. Внутри домика: холодильник, чайник, диван, столик, микроволновка. На веранде: большой стол и лавочки. Рядом мангальная зона.",
                 photos: ["photos/крдом.jpg", "photos/крдом1.jpg", "photos/крдом2.jpg", "photos/крдом3.jpg", "photos/крдом4.jpg"]
             },
@@ -690,16 +682,19 @@
             },
             {
                 name: "Пляжный дом", price: "от 14 000 ₽", priceNote: "/ день", capacity: "до 25 человек",
+                id: "beachhouse",
                 desc: "Подходит для проведения любого мероприятия. Удобное расположение, панорамные окна, красивый вид на пляж и реку Камышинку. Просторная мангальная зона. Внутри столы, лавочки, 2 холодильника, микроволновка, чайник, рукомойник, сплит-система. В холодное время отапливается дровяной печкой.",
                 photos: ["photos/плдом.jpg", "photos/плдом1.jpg", "photos/плдом2.jpg", "photos/плдом3.jpg", "photos/плдом4.jpg"]
             },
             {
                 name: "Беседка Лофт", price: "от 13 000 ₽", priceNote: "/ день", capacity: "до 35 человек",
+                id: "loft",
                 desc: "Стильное и просторное место для отдыха большой компанией. Подходит для проведения любого мероприятия: дни рождения, корпоративы, свадьбы, встречи с друзьями. Есть холодильники, чайник, микроволновка, столы и лавочки, потолочные вентиляторы. Рядом мангальная зона.",
                 photos: ["photos/лофт.jpg", "photos/лофт1.jpg", "photos/лофт2.jpg", "photos/лофт3.jpg", "photos/лофт4.jpg", "photos/лофт5.jpg"]
             },
             {
                 name: "Большая беседка", price: "от 15 000 ₽", priceNote: "/ день", capacity: "до 60 человек",
+                id: "big",
                 desc: "Просторное место для больших компаний и праздников. Подходит для свадеб, корпоративов, юбилеев и больших дружеских встреч. Оснащена холодильниками, чайником, микроволновкой, столами, лавочками. Установлена сплит-система. Рядом рукомойники и мангальная зона. В холодное время отапливается печкой-буржуйкой.",
                 photos: ["photos/болшбес.jpg", "photos/болшбес1.jpg", "photos/болшбес2.jpg", "photos/болшбес3.jpg", "photos/болшбес4.jpg", "photos/болшбес5.jpg", "photos/болшбес6.jpg"]
             },
@@ -757,8 +752,9 @@
                 </div>
             ` : '';
 
+            const cardId = item.id || '';
             cardsHtml += `
-            <div class="price-card" data-card-index="${idx}">
+                <div class="price-card" id="${cardId}" data-card-index="${idx}">
                 <div class="slider-container" id="slider-${idx}">
                     <div class="slider-images">
                         ${sliderImagesHtml}
@@ -839,6 +835,28 @@
                 if (dots.length) dots[0].classList.add('active');
                 updateSlider();
             });
+        }
+
+        // ===== ПЛАВНЫЙ СКРОЛЛ К КАРТОЧКЕ С ОТСТУПОМ =====
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                // Ждём загрузки всех элементов
+                window.addEventListener('load', function () {
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    const offset = 195; // ← ОТСТУП 200px
+
+                    window.scrollTo({
+                        top: targetPosition - offset,
+                        behavior: 'smooth'
+                    });
+
+                    // Подсветка карточки
+                    target.style.transition = 'box-shadow 0.3s';
+                    target.style.boxShadow = '0 0 0 4px #5f9e4b';
+                    setTimeout(() => {target.style.boxShadow = '';}, 3000);
+                });
+            }
         }
 
         // Запуск анимаций при скролле

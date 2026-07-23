@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>База отдыха «Раздолье»</title>
     <meta name="description"
-        content="База отдыха Раздолье в Камышине — песчаный пляж, беседки с мангалом, уютные5 домики. Бронирование по телефону +7 (904) 418-70-87.">
+        content="База отдыха Раздолье в Камышине — песчаный пляж, беседки с мангалом, уютные домики. Бронирование по телефону +7 (904) 418-70-87.">
     <meta name="keywords" content="база отдыха Раздолье, Камышин, отдых на природе, беседки с мангалом, песчаный пляж">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -312,7 +312,7 @@
             border-radius: 4px;
         }
 
-        /* ===== СЛАЙДЕРЫ В КАРТОЧКАХ ИНФРАСТРУКТУРЫ ===== */
+        /* ===== СЛАЙДЕРЫ В КАРТОЧКАХ ===== */
         .card-slider {
             position: relative;
             overflow: hidden;
@@ -325,6 +325,11 @@
             display: flex;
             transition: transform 0.6s ease-in-out;
             height: 100%;
+        }
+
+        .card-slider .slider-slide {
+            min-width: 100%;
+            flex-shrink: 0;
         }
 
         .card-slider .slider-track img {
@@ -836,6 +841,16 @@
                 margin: 0;
                 padding: 0 4px;
             }
+
+            .card-slider,
+            .card-img {
+                aspect-ratio: 1 / 1 !important;
+            }
+
+            .card-slider .slider-track img {
+                aspect-ratio: 1 / 1 !important;
+                object-fit: cover !important;
+            }
         }
 
         @media (max-width: 700px) {
@@ -965,13 +980,6 @@
                 max-width: 50%;
                 justify-self: center;
             }
-
-            .grid-3 .card:last-child,
-            .grid-3 .review-card:last-child {
-                grid-column: 1 / -1;
-                max-width: 50%;
-                justify-self: center;
-            }
         }
 
         @media (min-width: 967px) and (max-width: 1279px) {
@@ -1030,22 +1038,29 @@
             }
         }
 
-        .card-slider .slider-slide {
-            min-width: 100%;
-            flex-shrink: 0;
+        /* ===== КЛИКАБЕЛЬНАЯ ЧАСТЬ ===== */
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-radius: 0 0 28px 28px;
         }
 
-        /* ===== ДЛЯ ТЕЛЕФОНОВ: квадратные фото ===== */
-        @media (max-width: 768px) {
+        .card-link:hover {
+            background-color: #f0f8ea;
+            /* лёгкая подсветка при наведении */
+        }
 
-            .card-slider,
-            .slider-container,
-            .slider-track img,
-            .card-slider,
-            .card-img {
-                aspect-ratio: 1 / 1 !important;
-                object-fit: cover !important;
-            }
+        .card-link:active {
+            background-color: #e0f0d0;
+        }
+
+        /* Убираем эффект наведения с самой карточки */
+        .card:hover {
+            transform: none !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
         }
     </style>
 
@@ -1059,8 +1074,14 @@
         })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=110847285', 'ym');
 
         ym(110847285, 'init', {
-            ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document
-                .referrer, url: location.href, accurateTrackBounce: true, trackLinks: true
+            ssr: true,
+            webvisor: true,
+            clickmap: true,
+            ecommerce: "dataLayer",
+            referrer: document.referrer,
+            url: location.href,
+            accurateTrackBounce: true,
+            trackLinks: true
         });
     </script>
     <noscript>
@@ -1172,13 +1193,12 @@
             </div>
         </section>
 
-        <!-- Инфраструктура со слайдерами -->
+        <!-- Инфраструктура -->
         <section id="facilities" style="background: #ecf5e4;">
             <div class="container">
                 <div class="section-title">Инфраструктура и развлечения</div>
-                <div class="grid-4"><!-- Меняем grid-3 на grid-4, чтобы было 4 колонки -->
+                <div class="grid-4">
 
-                    <!-- Пляж -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-beach">
                             <div class="slider-track">
@@ -1197,7 +1217,6 @@
                         </div>
                     </div>
 
-                    <!-- Беседки -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-gazebos">
                             <div class="slider-track">
@@ -1217,7 +1236,6 @@
                         </div>
                     </div>
 
-                    <!-- Детская площадка -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-playground">
                             <div class="slider-track">
@@ -1235,13 +1253,11 @@
                         <div class="card-content">
                             <h3><i class="fas fa-child"></i> Детская площадка</h3>
                             <p>Безопасная и современная детская площадка с качелями, горками и каруселью. Дети могут
-                                играть под присмотром родителей. Отличное место для детей!
-                            </p>
+                                играть под присмотром родителей. Отличное место для детей!</p>
                             <div class="badge">Для детей всех возрастов</div>
                         </div>
                     </div>
 
-                    <!-- Спорт -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-sport">
                             <div class="slider-track">
@@ -1285,12 +1301,15 @@
                             </div>
                             <div class="slider-dots" id="dots-redhouse"></div>
                         </div>
-                        <div class="card-content">
-                            <h3>Красный домик</h3>
-                            <p>До 16 гостей. Внутри домика: холодильник, чайник, диван, столик, микроволновка. На
-                                веранде: большой стол и лавочки. Рядом мангальная зона.</p>
-                            <div class="badge">от 10 000 ₽</div>
-                        </div>
+                        <!-- ТОЛЬКО ТЕКСТОВАЯ ЧАСТЬ КЛИКАБЕЛЬНА -->
+                        <a href="prices.html#redhouse" class="card-link">
+                            <div class="card-content">
+                                <h3>Красный домик</h3>
+                                <p>До 16 гостей. Внутри домика: холодильник, чайник, диван, столик, микроволновка. На
+                                    веранде: большой стол и лавочки. Рядом мангальная зона.</p>
+                                <div class="badge">от 10 000 ₽</div>
+                            </div>
+                        </a>
                     </div>
 
                     <!-- Беседка Лофт -->
@@ -1305,12 +1324,14 @@
                             </div>
                             <div class="slider-dots" id="dots-loft"></div>
                         </div>
-                        <div class="card-content">
-                            <h3>Беседка «Лофт»</h3>
-                            <p>До 35 человек. Есть холодильники, чайник, микроволновка, столы и лавочки, потолочные
-                                вентиляторы. Рядом мангальная зона.</p>
-                            <div class="badge">от 13 000 ₽</div>
-                        </div>
+                        <a href="prices.html#loft" class="card-link">
+                            <div class="card-content">
+                                <h3>Беседка «Лофт»</h3>
+                                <p>До 35 человек. Есть холодильники, чайник, микроволновка, столы и лавочки, потолочные
+                                    вентиляторы. Рядом мангальная зона.</p>
+                                <div class="badge">от 13 000 ₽</div>
+                            </div>
+                        </a>
                     </div>
 
                     <!-- Большая беседка -->
@@ -1329,12 +1350,14 @@
                             </div>
                             <div class="slider-dots" id="dots-big"></div>
                         </div>
-                        <div class="card-content">
-                            <h3>Большая беседка</h3>
-                            <p>До 60 гостей. Есть холодильник, чайник, микроволновка, столы, лавочки.
-                                Установлена сплит-система и буржуйка. Рядом рукомойники и мангальная зона.</p>
-                            <div class="badge">от 15 000 ₽</div>
-                        </div>
+                        <a href="prices.html#big" class="card-link">
+                            <div class="card-content">
+                                <h3>Большая беседка</h3>
+                                <p>До 60 гостей. Есть холодильник, чайник, микроволновка, столы, лавочки.
+                                    Установлена сплит-система и буржуйка. Рядом рукомойники и мангальная зона.</p>
+                                <div class="badge">от 15 000 ₽</div>
+                            </div>
+                        </a>
                     </div>
 
                     <!-- Пляжный дом -->
@@ -1349,12 +1372,14 @@
                             </div>
                             <div class="slider-dots" id="dots-beachhouse"></div>
                         </div>
-                        <div class="card-content">
-                            <h3>Пляжный дом</h3>
-                            <p>До 25 человек. Внутри столы, лавочки, 2 холодильника, микроволновка, чайник, рукомойник,
-                                сплит-система. Просторная мангальная зона.</p>
-                            <div class="badge">от 14 000 ₽</div>
-                        </div>
+                        <a href="prices.html#beachhouse" class="card-link">
+                            <div class="card-content">
+                                <h3>Пляжный дом</h3>
+                                <p>До 25 человек. Внутри столы, лавочки, 2 холодильника, микроволновка, чайник,
+                                    рукомойник, сплит-система. Просторная мангальная зона.</p>
+                                <div class="badge">от 14 000 ₽</div>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
@@ -1412,7 +1437,6 @@
                 </div>
 
                 <div class="reviews-layout">
-                    <!-- Слайдер отзывов с анимацией -->
                     <div class="reviews-slider" id="slider-reviews">
                         <div class="slider-track">
                             <div class="slider-slide">
@@ -1480,8 +1504,7 @@
                                     <div class="stars">★★★★★</div>
                                     <div class="review-text">«Замечательное место, очень красиво, есть беседки и домики
                                         на разное количество людей, площадка для детей расположена по центру,
-                                        доступна всем домикам. Будем отмечать второй раз там день рождение)»
-                                    </div>
+                                        доступна всем домикам. Будем отмечать второй раз там день рождение)»</div>
                                     <div class="review-author">— Мария Калабина</div>
                                     <div class="review-date">24 июня 2025</div>
                                 </div>
@@ -1490,8 +1513,7 @@
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
                                     <div class="review-text">«Все чистенько спокойно душа там как дома,персонал
-                                        старается выполняют любые просьбы ,место 10/10
-                                        »</div>
+                                        старается выполняют любые просьбы ,место 10/10»</div>
                                     <div class="review-author">— Елена</div>
                                     <div class="review-date">21 ноября 2026</div>
                                 </div>
@@ -1518,7 +1540,6 @@
                         <div class="slider-dots" id="dots-reviews"></div>
                     </div>
 
-                    <!-- Премии -->
                     <div class="awards-block">
                         <div class="award-badge animate-on-scroll">
                             <img src="photos/Яндекс.png" alt="📍"
@@ -1672,6 +1693,7 @@
         </button>
     </div>
 
+    <!-- ===== СКРИПТЫ ===== -->
     <script>
         // ===== ГЛОБАЛЬНАЯ ФУНКЦИЯ ДЛЯ ОШИБОК ФОТО =====
         function showError(img) {
@@ -1689,12 +1711,12 @@
             if (!name) name = 'Фото';
 
             img.outerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;flex-shrink:0;background:#2a3d24;color:white;text-align:center;padding:10px;box-sizing:border-box;overflow:hidden;word-wrap:break-word;overflow-wrap:break-word;">
-            <div style="font-size:1rem;font-weight:bold;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">Фото не прогрузилось :(</div>
-            <div style="font-size:0.85rem;font-weight:normal;margin-top:4px;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">${name}</div>
-        </div>`;
+                <div style="font-size:1rem;font-weight:bold;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">Фото не прогрузилось :(</div>
+                <div style="font-size:0.85rem;font-weight:normal;margin-top:4px;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">${name}</div>
+            </div>`;
         }
 
-        // Слайд-шоу
+        // ===== СЛАЙД-ШОУ =====
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slideshow-bg img');
 
@@ -1710,7 +1732,7 @@
             setTimeout(showSlides, 10000);
         }
 
-        // Логотип
+        // ===== ЛОГОТИП =====
         const logoImg = document.querySelector('.logo-img');
         if (logoImg) {
             logoImg.onerror = function () {
@@ -1720,7 +1742,7 @@
             };
         }
 
-        // Анимации при скролле
+        // ===== АНИМАЦИИ ПРИ СКРОЛЛЕ =====
         document.addEventListener('DOMContentLoaded', function () {
             const elements = document.querySelectorAll('.animate-on-scroll');
 
@@ -1737,7 +1759,7 @@
             elements.forEach(el => observer.observe(el));
         });
 
-        // Кнопка "Наверх"
+        // ===== КНОПКА "НАВЕРХ" =====
         var backToTop = document.getElementById('back-to-top');
 
         window.addEventListener('scroll', function () {
@@ -1752,7 +1774,7 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
-        // Кнопка "Поделиться"
+        // ===== КНОПКА "ПОДЕЛИТЬСЯ" =====
         document.getElementById('share-btn').addEventListener('click', function () {
             if (navigator.share) {
                 navigator.share({
@@ -1768,7 +1790,7 @@
             }
         });
 
-        // Уведомление о статистике
+        // ===== УВЕДОМЛЕНИЕ О СТАТИСТИКЕ =====
         (function () {
             if (!sessionStorage.getItem('statShown')) {
                 document.getElementById('stat-modal').style.display = 'flex';
