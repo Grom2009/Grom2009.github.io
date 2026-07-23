@@ -5,8 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>База отдыха «Раздолье»</title>
+    <meta name="description"
+        content="База отдыха Раздолье в Камышине — песчаный пляж, беседки с мангалом, уютные5 домики. Бронирование по телефону +7 (904) 418-70-87.">
+    <meta name="keywords" content="база отдыха Раздолье, Камышин, отдых на природе, беседки с мангалом, песчаный пляж">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Предзагрузка для ускорения -->
+    <link rel="preload" href="photos/fon1.jpg" as="image">
+    <link rel="preload" href="photos/logo.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <style>
         /* ===== ОБНУЛЕНИЕ И ОСНОВНЫЕ СТИЛИ ===== */
@@ -1043,9 +1052,9 @@
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i] = m[i] || function () {(m[i].a = m[i].a || []).push(arguments)};
             m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) {return;} }
             k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
         })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=110847285', 'ym');
 
@@ -1636,7 +1645,7 @@
             <p style="margin: 16px 0;">☎️ +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2026 База отдыха «Раздолье» | Работаем для вас круглый год</p>
-            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 22.07.2026</p>
+            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 23.07.2026</p>
         </div>
     </footer>
 
@@ -1664,7 +1673,7 @@
     </div>
 
     <script>
-        // ===== ОБРАБОТЧИК ДЛЯ СЛОМАННЫХ ФОТО (ГЛОБАЛЬНАЯ ФУНКЦИЯ) =====
+        // ===== ГЛОБАЛЬНАЯ ФУНКЦИЯ ДЛЯ ОШИБОК ФОТО =====
         function showError(img) {
             img.onerror = null;
             let name = img.alt || '';
@@ -1680,9 +1689,9 @@
             if (!name) name = 'Фото';
 
             img.outerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;flex-shrink:0;background:#2a3d24;color:white;text-align:center;padding:10px;box-sizing:border-box;overflow:hidden;word-wrap:break-word;overflow-wrap:break-word;">
-        <div style="font-size:1rem;font-weight:bold;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">Фото не прогрузилось :(</div>
-        <div style="font-size:0.85rem;font-weight:normal;margin-top:4px;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">${name}</div>
-    </div>`;
+            <div style="font-size:1rem;font-weight:bold;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">Фото не прогрузилось :(</div>
+            <div style="font-size:0.85rem;font-weight:normal;margin-top:4px;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">${name}</div>
+        </div>`;
         }
 
         // Слайд-шоу
@@ -1740,7 +1749,7 @@
         });
 
         backToTop.addEventListener('click', function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
         // Кнопка "Поделиться"
@@ -1786,7 +1795,7 @@
                         var dot = document.createElement('button');
                         dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
                         dot.setAttribute('data-index', i);
-                        dot.addEventListener('click', function () { goToSlide(i); });
+                        dot.addEventListener('click', function () {goToSlide(i);});
                         dotsContainer.appendChild(dot);
                     });
 
@@ -1816,7 +1825,7 @@
 
                     resetAutoSlide();
 
-                    wrapper.addEventListener('mouseenter', function () { clearInterval(autoSlide); });
+                    wrapper.addEventListener('mouseenter', function () {clearInterval(autoSlide);});
                     wrapper.addEventListener('mouseleave', resetAutoSlide);
 
                     var touchStartX = 0;

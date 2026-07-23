@@ -5,8 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>База отдыха «Раздолье»</title>
+    <meta name="description"
+        content="База отдыха Раздолье в Камышине — песчаный пляж, беседки с мангалом, уютные домики. Бронирование по телефону +7 (904) 418-70-87.">
+    <meta name="keywords" content="база отдыха Раздолье, Камышин, отдых на природе, беседки с мангалом, песчаный пляж">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Предзагрузка для ускорения -->
+    <link rel="preload" href="photos/fon1.jpg" as="image">
+    <link rel="preload" href="photos/logo.png" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <style>
         * {
@@ -479,18 +488,30 @@
                 aspect-ratio: 4 / 5 !important;
             }
         }
+
+        /* ===== ОТСТУПЫ ДЛЯ ПОИСКА НА ТЕЛЕФОНАХ ===== */
+        @media (max-width: 600px) {
+            #searchInput {
+                padding: 14px 50px 14px 16px !important;
+                font-size: 0.9rem !important;
+            }
+
+            .search-wrapper {
+                padding: 0 12px !important;
+            }
+        }
     </style>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i] = m[i] || function () {(m[i].a = m[i].a || []).push(arguments)};
             m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) {return;} }
             k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
         })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=110847285', 'ym');
 
-        ym(110847285, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+        ym(110847285, 'init', {ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true});
     </script>
     <noscript>
         <div><img src="https://mc.yandex.ru/watch/110847285" style="position:absolute; left:-9999px;" alt="" /></div>
@@ -542,7 +563,7 @@
     <!-- Начало и конец -->
     <main>
         <!-- ===== ПОИСК ===== -->
-        <div style="max-width: 500px; margin: 20px auto 10px;">
+        <div class="search-wrapper" style="max-width: 500px; margin: 20px auto 10px; padding: 0;">
             <div style="position: relative;">
                 <input type="text" id="searchInput" placeholder="🔍 Поиск по названию, цене или описанию..."
                     style="width: 100%; padding: 14px 50px 14px 20px; border-radius: 50px; border: 2px solid #d9eaca; font-size: 1rem; outline: none; transition: 0.3s; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
@@ -598,7 +619,7 @@
             <p style="margin: 16px 0;">☎️ +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2026 База отдыха «Раздолье» | Работаем для вас круглый год</p>
-            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 22.07.2026</p>
+            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 23.07.2026</p>
         </div>
     </footer>
 
@@ -859,7 +880,7 @@
         });
 
         backToTop.addEventListener('click', function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
         // ===== ПОИСК =====
