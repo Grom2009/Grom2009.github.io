@@ -14,48 +14,35 @@
 
     <!-- ===== МИКРОРАЗМЕТКА: ОРГАНИЗАЦИЯ ===== -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "TouristAttraction",
-      "name": "База отдыха «Раздолье»",
-      "description": "Песчаный пляж, беседки с мангалом, уютные домики на берегу реки Камышинки.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Камышин",
-        "addressRegion": "Волгоградская область",
-        "streetAddress": "Рязано-Уральская улица, 2"
-      },
-      "telephone": "+79044187087",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "915"
-      },
-      "image": "https://razdolie-kam.ru/photos/fon1.jpg",
-      "url": "https://razdolie-kam.ru"
-    }
+        {
+        "@context": "https://schema.org",
+        "@type": "TouristAttraction",
+        "name": "База отдыха «Раздолье»",
+        "description": "Песчаный пляж, беседки с мангалом, уютные домики на берегу реки Камышинки.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Камышин",
+            "addressRegion": "Волгоградская область",
+            "streetAddress": "Рязано-Уральская улица, 2"
+        },
+        "telephone": "+79044187087",
+        "image": "https://razdolie-kam.ru/photos/fon1.jpg",
+        "url": "https://razdolie-kam.ru"
+        }
     </script>
 
     <!-- ===== МИКРОРАЗМЕТКА: ХЛЕБНЫЕ КРОШКИ ===== -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://razdolie-kam.ru"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Цены",
-          "item": "https://razdolie-kam.ru/prices.html"
+        "@context": "https://schema.org",
+        "@type": "Place",
+        "name": "База отдыха «Раздолье»",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "915"
         }
-      ]
-    }
+        }
     </script>
 
     <!-- ===== ПОДКЛЮЧЕНИЕ ИКОНОК ===== -->
@@ -68,11 +55,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <style>
-        /* ===== ОБНУЛЕНИЕ И ОСНОВНЫЕ СТИЛИ ===== */
+        /* 1. ОБНУЛЕНИЕ И ОСНОВНЫЕ СТИЛИ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            max-width: 100%;
         }
 
         body {
@@ -84,14 +72,14 @@
         }
 
         .container {
-            max-width: 1500px;
+            max-width: 100%;
             margin: 0 auto;
             padding: 0 24px;
             position: relative;
             z-index: 2;
         }
 
-        /* ===== ШАПКА И НАВИГАЦИЯ ===== */
+        /* 2. ШАПКА И НАВИГАЦИЯ */
         header {
             background: #0f2b0f;
             box-shadow: 0 6px 18px rgba(0, 20, 0, 0.2);
@@ -159,35 +147,31 @@
             color: #f9e45b;
         }
 
+        /* 3. КНОПКИ */
         .btn-outline-green {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 0.4em;
             border: 1px solid #b9df7e;
-            padding: 8px 14px;
+            padding: 0.5em 0.9em;
             border-radius: 40px;
             background: transparent;
             color: #e9ffcf;
             font-weight: 600;
             transition: 0.2s;
             line-height: 1.2;
-            height: 36px;
-            box-sizing: border-box;
+            font-size: 0.9rem;
         }
 
         .btn-outline-green i,
         .btn-outline-green img {
-            vertical-align: middle;
-            display: inline-block;
-            margin-right: 5px;
-            position: relative;
-            top: -1px;
-            /* чуть поднять, если нужно */
+            display: block;
+            flex-shrink: 0;
         }
 
         .btn-outline-green img {
-            height: 16px;
+            height: 1em;
             width: auto;
         }
 
@@ -196,74 +180,31 @@
             color: #0f2b0f;
         }
 
-        @media (min-width: 769px) {
-            .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: flex-end;
-                gap: 8px;
-            }
-
-            .nav-main,
-            .nav-secondary {
-                display: inline-flex;
-                gap: 8px;
-            }
+        .btn-primary {
+            background: linear-gradient(135deg, #7cb45e, #5f9e4b);
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            color: #1f3a1a;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
-        @media (max-width: 830px) {
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .nav-main {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                width: 100%;
-            }
-
-            .nav-secondary {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-                width: 100%;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-                padding: 6px 10px;
-            }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #86c46a, #4f8a3c);
+            color: #fff;
         }
 
-        @media (max-width: 650px) {
-
-            .nav-main,
-            .nav-secondary {
-                gap: 7px;
-            }
-
-            .nav-main a,
-            .nav-secondary a {
-                font-size: 0.8rem;
-                padding: 5px 9px;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .nav-main a,
-            .nav-secondary a {
-                font-size: 0.65rem;
-                padding: 4px 6px;
-            }
-        }
-
-        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
+        /* 4. ГЛАВНЫЙ ЭКРАН (HERO) */
         .hero {
             position: relative;
             min-height: 90vh;
@@ -337,32 +278,7 @@
             margin-top: 20px;
         }
 
-        /* ===== КНОПКИ ===== */
-        .btn-primary {
-            background: linear-gradient(135deg, #7cb45e, #5f9e4b);
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 700;
-            color: #1f3a1a;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(135deg, #86c46a, #4f8a3c);
-            color: #fff;
-        }
-
-        /* ===== СЕКЦИИ И ЗАГОЛОВКИ ===== */
+        /* 5. СЕКЦИИ И ЗАГОЛОВКИ */
         section {
             padding: 80px 0;
         }
@@ -387,7 +303,7 @@
             border-radius: 4px;
         }
 
-        /* ===== СЛАЙДЕРЫ В КАРТОЧКАХ ===== */
+        /* 6. СЛАЙДЕРЫ В КАРТОЧКАХ */
         .card-slider {
             position: relative;
             overflow: hidden;
@@ -443,7 +359,7 @@
             border-radius: 10px;
         }
 
-        /* ===== СЕТКИ ===== */
+        /* 7. СЕТКИ И КАРТОЧКИ */
         .grid-3,
         .grid-4 {
             display: grid;
@@ -451,7 +367,6 @@
             gap: 30px;
         }
 
-        /* ===== КАРТОЧКИ ===== */
         .card {
             background: #fff;
             border-radius: 28px;
@@ -500,6 +415,7 @@
             margin-top: 14px;
         }
 
+        /* 8. ПРЕИМУЩЕСТВА (ИКОНКИ) */
         .features-list {
             display: flex;
             flex-wrap: wrap;
@@ -526,7 +442,7 @@
             color: #5b9e3a;
         }
 
-        /* ===== ОТЗЫВЫ И ПРЕМИИ ===== */
+        /* 9. ОТЗЫВЫ И ПРЕМИИ */
         .reviews-slider {
             overflow: hidden;
             border-radius: 32px;
@@ -595,7 +511,6 @@
             max-width: 100%;
             word-wrap: break-word;
             overflow-wrap: break-word;
-            white-space: normal;
         }
 
         .review-author {
@@ -663,26 +578,7 @@
             gap: 30px;
         }
 
-        @media (max-width: 979px) {
-            .reviews-layout {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .reviews-layout .reviews-slider {
-                width: 100%;
-                max-width: 100%;
-                flex: none;
-            }
-
-            .reviews-layout .awards-block {
-                width: 100%;
-                flex: none;
-                align-items: center;
-            }
-        }
-
-        /* ===== ВИДЕО ===== */
+        /* 10. ВИДЕО */
         .video-container {
             position: relative;
             width: 100%;
@@ -699,21 +595,7 @@
             object-fit: cover;
         }
 
-        @media (min-width: 701px) {
-            #video>div>div {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-            }
-
-            #video .video-container {
-                max-width: 350px;
-                margin: 0;
-            }
-        }
-
-        /* ===== КОНТАКТЫ ===== */
+        /* 11. КОНТАКТЫ */
         .contact-flex {
             display: flex;
             flex-wrap: wrap;
@@ -779,7 +661,7 @@
             border: 0;
         }
 
-        /* ===== ПОДВАЛ ===== */
+        /* 12. ПОДВАЛ */
         footer {
             background: #0f2b0f;
             color: #e2f0d3;
@@ -787,30 +669,7 @@
             text-align: center;
         }
 
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #2b5427;
-            padding: 8px 22px;
-            border-radius: 60px;
-            transition: 0.2s;
-            margin-top: 16px;
-            text-decoration: none;
-            color: #f5ffdf;
-            font-weight: 500;
-        }
-
-        .social-icon i {
-            font-size: 1.4rem;
-        }
-
-        .social-icon:hover {
-            background: #78b54a;
-            color: #0f2b0f;
-        }
-
-        /* ===== АНИМАЦИИ ПРИ СКРОЛЛЕ ===== */
+        /* 13. АНИМАЦИИ ПРИ СКРОЛЛЕ */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(40px);
@@ -846,8 +705,107 @@
             transition-delay: 0.6s;
         }
 
-        /* ===== АДАПТИВ ===== */
-        @media (max-width: 1085px) {
+        /* 14. КЛИКАБЕЛЬНЫЕ КАРТОЧКИ (ДОМИКИ) */
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-radius: 0 0 28px 28px;
+        }
+
+        .card-link:hover {
+            background-color: #f0f8ea;
+        }
+
+        .card-link:active {
+            background-color: #e0f0d0;
+        }
+
+        .card:hover {
+            transform: none !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* 15. АДАПТИВ (ВСЁ В ОДНОМ МЕСТЕ) */
+
+        /* --- Планшет и ПК --- */
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 8px;
+            }
+
+            .nav-main,
+            .nav-secondary {
+                display: inline-flex;
+                gap: 8px;
+            }
+
+            .contact-item {
+                flex-wrap: nowrap;
+                align-items: center;
+                gap: 10px;
+                margin: 16px 0;
+            }
+
+            .contact-item i {
+                width: 28px;
+                font-size: 1.3rem;
+                flex-shrink: 0;
+            }
+
+            .contact-item .contact-label {
+                flex-shrink: 0;
+                font-size: 1rem;
+            }
+
+            .contact-item .contact-value {
+                display: inline;
+                width: auto;
+                padding-left: 0;
+                font-size: 1rem;
+                flex: 1;
+            }
+        }
+
+        /* --- Промежуточные разрешения --- */
+        @media (min-width: 655px) and (max-width: 967px) {
+            .grid-3 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+            }
+
+            .grid-3 .card:last-child {
+                grid-column: 1 / -1;
+                max-width: 50%;
+                justify-self: center;
+            }
+        }
+
+        @media (min-width: 967px) and (max-width: 1279px) {
+            .grid-4 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                justify-items: center;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .grid-4 .card {
+                max-width: 340px;
+                width: 100%;
+            }
+        }
+
+        /* --- Большие экраны --- */
+        @media (max-width: 1092px) {
             .hero h1 {
                 font-size: 2.7rem;
             }
@@ -876,6 +834,26 @@
             }
         }
 
+        /* --- Планшет --- */
+        @media (max-width: 979px) {
+            .reviews-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .reviews-layout .reviews-slider {
+                width: 100%;
+                max-width: 100%;
+                flex: none;
+            }
+
+            .reviews-layout .awards-block {
+                width: 100%;
+                flex: none;
+                align-items: center;
+            }
+        }
+
         @media (max-width: 898px) {
             .contact-flex {
                 flex-direction: column;
@@ -894,6 +872,36 @@
 
             .map-placeholder iframe {
                 height: 280px !important;
+            }
+        }
+
+        /* --- Мобильные --- */
+        @media (max-width: 834px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .nav-main,
+            .nav-secondary {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+        }
+
+        @media (max-width: 830px) {
+            .btn-outline-green {
+                font-size: 0.85rem;
+                padding: 0.4em 0.8em;
             }
         }
 
@@ -989,6 +997,25 @@
             }
         }
 
+        @media (max-width: 650px) {
+
+            .nav-main,
+            .nav-secondary {
+                gap: 7px;
+            }
+
+            .nav-main a,
+            .nav-secondary a {
+                font-size: 0.8rem;
+                padding: 5px 9px;
+            }
+
+            .btn-outline-green {
+                font-size: 0.8rem;
+                padding: 0.35em 0.7em;
+            }
+        }
+
         @media (max-width: 550px) {
             #questions div:last-child {
                 flex-direction: column;
@@ -997,6 +1024,23 @@
 
             #questions a {
                 justify-content: center;
+            }
+        }
+
+        @media (max-width: 509px) {
+            #stat-modal {
+                flex-direction: column !important;
+                gap: 12px !important;
+                padding: 16px 20px !important;
+                max-width: 92% !important;
+                text-align: center;
+            }
+
+            #stat-modal button {
+                width: auto !important;
+                padding: 8px 24px !important;
+                font-size: 0.85rem !important;
+                align-self: center;
             }
         }
 
@@ -1023,81 +1067,16 @@
                 padding: 12px 23px;
                 gap: 15px;
             }
-        }
 
-        @media (min-width: 769px) {
-            .contact-item {
-                flex-wrap: nowrap;
-                align-items: center;
-                gap: 10px;
-                margin: 16px 0;
+            .nav-main a,
+            .nav-secondary a {
+                font-size: 0.65rem;
+                padding: 4px 6px;
             }
 
-            .contact-item i {
-                width: 28px;
-                font-size: 1.3rem;
-                flex-shrink: 0;
-            }
-
-            .contact-item .contact-label {
-                flex-shrink: 0;
-                font-size: 1rem;
-            }
-
-            .contact-item .contact-value {
-                display: inline;
-                width: auto;
-                padding-left: 0;
-                font-size: 1rem;
-                flex: 1;
-            }
-        }
-
-        @media (min-width: 655px) and (max-width: 967px) {
-            .grid-3 {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                justify-items: center;
-            }
-
-            .grid-3 .card:last-child {
-                grid-column: 1 / -1;
-                max-width: 50%;
-                justify-self: center;
-            }
-        }
-
-        @media (min-width: 967px) and (max-width: 1279px) {
-            .grid-4 {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                justify-items: center;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .grid-4 .card {
-                max-width: 340px;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 509px) {
-            #stat-modal {
-                flex-direction: column !important;
-                gap: 12px !important;
-                padding: 16px 20px !important;
-                max-width: 92% !important;
-                text-align: center;
-            }
-
-            #stat-modal button {
-                width: auto !important;
-                padding: 8px 24px !important;
-                font-size: 0.85rem !important;
-                align-self: center;
+            .btn-outline-green {
+                font-size: 0.75rem;
+                padding: 0.3em 0.6em;
             }
         }
 
@@ -1122,31 +1101,6 @@
                 padding: 6px 24px !important;
             }
         }
-
-        /* ===== КЛИКАБЕЛЬНАЯ ЧАСТЬ ===== */
-        .card-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            border-radius: 0 0 28px 28px;
-        }
-
-        .card-link:hover {
-            background-color: #f0f8ea;
-            /* лёгкая подсветка при наведении */
-        }
-
-        .card-link:active {
-            background-color: #e0f0d0;
-        }
-
-        /* Убираем эффект наведения с самой карточки */
-        .card:hover {
-            transform: none !important;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
-        }
     </style>
 
     <!-- Yandex.Metrika counter -->
@@ -1158,16 +1112,7 @@
             k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
         })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=110847285', 'ym');
 
-        ym(110847285, 'init', {
-            ssr: true,
-            webvisor: true,
-            clickmap: true,
-            ecommerce: "dataLayer",
-            referrer: document.referrer,
-            url: location.href,
-            accurateTrackBounce: true,
-            trackLinks: true
-        });
+        ym(110847285, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
     </script>
     <noscript>
         <div><img src="https://mc.yandex.ru/watch/110847285" style="position:absolute; left:-9999px;" alt="" /></div>
@@ -1175,10 +1120,7 @@
     <!-- /Yandex.Metrika counter -->
 </head>
 
-<!-- ========================================================================================================================= -->
-
 <body>
-
     <!-- ===== ШАПКА ===== -->
     <header>
         <div class="container">
@@ -1203,17 +1145,14 @@
                             style="background: #5f9e4b; color: #0f2b0f; border-color: #c9e24b;">
                             <i class="fas fa-tag"></i> Цены
                         </a>
-
                         <a href="https://max.ru/u/f9LHodD0cOKPHEjYtFXiVAk6uju2dm1CEIRHN1bJzXYP_71BgOZwAefALdY"
                             target="_blank" class="btn-outline-green">
                             <img src="photos/MAX-logo.jpg" alt="MAX">
                             MAX
                         </a>
-
                         <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-outline-green">
                             <i class="fab fa-vk"></i> VK
                         </a>
-
                         <a href="tel:+79044187087" class="btn-outline-green">
                             <i class="fas fa-phone-alt"></i> Позвонить
                         </a>
@@ -1225,8 +1164,7 @@
 
     <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
     <main>
-
-        <!-- Герой -->
+        <!-- ГЕРОЙ -->
         <div class="hero">
             <div class="slideshow-bg">
                 <img src="photos/fon1.jpg" alt="Фон 1" class="active">
@@ -1248,7 +1186,7 @@
                         style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: flex-start;">
                         <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                             class="rating-link" style="text-decoration: none;">
-                            <span class="rating-highlight"><i class="fas fa-star"></i> 5.0 · 923 оценок</span>
+                            <span class="rating-highlight"><i class="fas fa-star"></i> 5.0 · 929 оценок</span>
                         </a>
                         <span
                             style="background: #eaffdd; color:#1a471a; padding: 5px 15px; border-radius: 40px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
@@ -1265,7 +1203,7 @@
             </div>
         </div>
 
-        <!-- О нас -->
+        <!-- О НАС -->
         <section id="about">
             <div class="container">
                 <div class="section-title">Тихое раздолье у воды</div>
@@ -1287,12 +1225,12 @@
             </div>
         </section>
 
-        <!-- Инфраструктура -->
+        <!-- ИНФРАСТРУКТУРА -->
         <section id="facilities" style="background: #ecf5e4;">
             <div class="container">
                 <div class="section-title">Инфраструктура и развлечения</div>
                 <div class="grid-4">
-
+                    <!-- Пляж -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-beach">
                             <div class="slider-track">
@@ -1306,11 +1244,11 @@
                         <div class="card-content">
                             <h3><i class="fas fa-swimmer"></i> Пляж</h3>
                             <p>Песчаный пляж на берегу Камышинки с пологим входом — безопасно для детей и взрослых.
-                                Чистый песок и лежаки. Можно купаться, загорать или просто сидеть у воды.</p>
+                                Чистый песок и лежаки.</p>
                             <div class="badge">Идеально для семей</div>
                         </div>
                     </div>
-
+                    <!-- Беседки -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-gazebos">
                             <div class="slider-track">
@@ -1323,13 +1261,12 @@
                         </div>
                         <div class="card-content">
                             <h3><i class="fas fa-home"></i> Беседки и домики</h3>
-                            <p>«Лофт» — крытая беседка с вентиляторами. «Красный домик» — отдельный домик с верандой.
-                                «Большая беседка» — для больших компаний. В каждой есть столы, лавочки, холодильник и
-                                мангал.</p>
+                            <p>«Лофт», «Красный домик», «Большая беседка» — для компаний любого размера. В каждой есть
+                                столы, лавочки, холодильник и мангал.</p>
                             <div class="badge">Подходит для любой компании</div>
                         </div>
                     </div>
-
+                    <!-- Детская площадка -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-playground">
                             <div class="slider-track">
@@ -1347,11 +1284,11 @@
                         <div class="card-content">
                             <h3><i class="fas fa-child"></i> Детская площадка</h3>
                             <p>Безопасная и современная детская площадка с качелями, горками и каруселью. Дети могут
-                                играть под присмотром родителей. Отличное место для детей!</p>
+                                играть под присмотром родителей.</p>
                             <div class="badge">Для детей всех возрастов</div>
                         </div>
                     </div>
-
+                    <!-- Спорт -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-sport">
                             <div class="slider-track">
@@ -1367,22 +1304,20 @@
                         </div>
                         <div class="card-content">
                             <h3><i class="fas fa-volleyball-ball"></i> Спорт и прокат</h3>
-                            <p>Волейбольная площадка с сеткой на зелёной травке. Прокат катамаранов и САП-бордов. Можно
-                                активно провести время на воде или устроить турнир по волейболу.</p>
+                            <p>Волейбольная площадка с сеткой. Прокат катамаранов и САП-бордов. Можно активно провести
+                                время на воде.</p>
                             <div class="badge">Снаряжение выдаём</div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- Домики -->
+        <!-- ДОМИКИ -->
         <section id="accommodation">
             <div class="container">
                 <div class="section-title">Наши домики и беседки</div>
                 <div class="grid-4">
-
                     <!-- Красный домик -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-redhouse">
@@ -1395,17 +1330,15 @@
                             </div>
                             <div class="slider-dots" id="dots-redhouse"></div>
                         </div>
-                        <!-- ТОЛЬКО ТЕКСТОВАЯ ЧАСТЬ КЛИКАБЕЛЬНА -->
                         <a href="prices.html#redhouse" class="card-link">
                             <div class="card-content">
                                 <h3>Красный домик</h3>
-                                <p>До 16 гостей. Внутри домика: холодильник, чайник, диван, столик, микроволновка. На
-                                    веранде: большой стол и лавочки. Рядом мангальная зона.</p>
+                                <p>До 16 гостей. Внутри: холодильник, чайник, диван, столик, микроволновка. На веранде:
+                                    большой стол и лавочки.</p>
                                 <div class="badge">от 10 000 ₽</div>
                             </div>
                         </a>
                     </div>
-
                     <!-- Беседка Лофт -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-loft">
@@ -1422,12 +1355,11 @@
                             <div class="card-content">
                                 <h3>Беседка «Лофт»</h3>
                                 <p>До 35 человек. Есть холодильники, чайник, микроволновка, столы и лавочки, потолочные
-                                    вентиляторы. Рядом мангальная зона.</p>
+                                    вентиляторы.</p>
                                 <div class="badge">от 13 000 ₽</div>
                             </div>
                         </a>
                     </div>
-
                     <!-- Большая беседка -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-big">
@@ -1448,13 +1380,12 @@
                         <a href="prices.html#big" class="card-link">
                             <div class="card-content">
                                 <h3>Большая беседка</h3>
-                                <p>До 60 гостей. Есть холодильник, чайник, микроволновка, столы, лавочки.
-                                    Установлена сплит-система и буржуйка. Рядом рукомойники и мангальная зона.</p>
+                                <p>До 60 гостей. Есть холодильник, чайник, микроволновка, столы, лавочки. Сплит-система
+                                    и буржуйка.</p>
                                 <div class="badge">от 15 000 ₽</div>
                             </div>
                         </a>
                     </div>
-
                     <!-- Пляжный дом -->
                     <div class="card animate-on-scroll">
                         <div class="card-slider" id="slider-beachhouse">
@@ -1470,13 +1401,12 @@
                         <a href="prices.html#beachhouse" class="card-link">
                             <div class="card-content">
                                 <h3>Пляжный дом</h3>
-                                <p>До 25 человек. Внутри столы, лавочки, 2 холодильника, микроволновка, чайник,
-                                    рукомойник, сплит-система. Просторная мангальная зона.</p>
+                                <p>До 25 человек. Внутри: столы, лавочки, 2 холодильника, микроволновка, чайник,
+                                    рукомойник, сплит-система.</p>
                                 <div class="badge">от 14 000 ₽</div>
                             </div>
                         </a>
                     </div>
-
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
                     <a href="prices.html" class="btn-primary"><i class="fas fa-list"></i> Посмотреть все цены и
@@ -1485,7 +1415,7 @@
             </div>
         </section>
 
-        <!-- Видео -->
+        <!-- ВИДЕО -->
         <section id="video" style="background: #ecf5e4; padding: 80px 0;">
             <div class="container">
                 <h2 class="section-title" style="text-align: center; width: 100%;">Видео о нас</h2>
@@ -1517,29 +1447,30 @@
             </div>
         </section>
 
-        <!-- Отзывы -->
+        <!-- ОТЗЫВЫ -->
         <section id="reviews">
             <div class="container">
                 <div class="section-title">Что говорят гости</div>
                 <div style="text-align: center; margin-bottom: 40px;">
                     <a href="https://yandex.ru/maps/org/razdolye/114323937885/reviews/" target="_blank"
                         class="rating-link" style="text-decoration: none;">
-                        <span class="rating-highlight" style="background: #588c3e; color:#fff;"><i
-                                class="fas fa-star"></i> 5.0 из 5 · 923 оценок на Яндекс.Картах</span>
+                        <span class="rating-highlight" style="background: #588c3e; color:#fff;">
+                            <i class="fas fa-star"></i> 5.0 из 5 · 929 оценок на Яндекс.Картах
+                        </span>
                     </a>
                     <p style="margin-top: 12px;">"Чистота, ухоженная территория, красивый пляж и доброжелательный
                         персонал"</p>
                 </div>
-
                 <div class="reviews-layout">
                     <div class="reviews-slider" id="slider-reviews">
                         <div class="slider-track">
+                            <!-- Отзывы -->
                             <div class="slider-slide">
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
                                     <div class="review-text">«Отдыхали с компанией на турбазе. Были в восторге от
-                                        радушного приема, ухоженной территории. Прекрасные клумбы с цветами и
-                                        отличный пляж. Обязательно приедем еще.»</div>
+                                        радушного приема, ухоженной территории. Прекрасные клумбы с цветами и отличный
+                                        пляж. Обязательно приедем еще.»</div>
                                     <div class="review-author">— Лукоянова Вера</div>
                                     <div class="review-date">6 июня 2026</div>
                                 </div>
@@ -1548,8 +1479,8 @@
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
                                     <div class="review-text">«Замечательные цветы, кустарники и деревья, приятная
-                                        обстановка, отличный пляж, волейбольная площадка с газоном, качели и много
-                                        чего хорошего. Отлично провели время!»</div>
+                                        обстановка, отличный пляж, волейбольная площадка с газоном, качели и много чего
+                                        хорошего. Отлично провели время!»</div>
                                     <div class="review-author">— Алексей Ш.</div>
                                     <div class="review-date">12 июня 2025</div>
                                 </div>
@@ -1557,9 +1488,9 @@
                             <div class="slider-slide">
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
-                                    <div class="review-text">«Отличный отдых, чисто, ухоженная территория. Пляж
-                                        хороший, чистый. Всё для приготовления еды на углях. Для большой компании
-                                        уютно. Рекомендую.»</div>
+                                    <div class="review-text">«Отличный отдых, чисто, ухоженная территория. Пляж хороший,
+                                        чистый. Всё для приготовления еды на углях. Для большой компании уютно.
+                                        Рекомендую.»</div>
                                     <div class="review-author">— Ольга Александровна</div>
                                     <div class="review-date">22 июня 2026</div>
                                 </div>
@@ -1577,10 +1508,9 @@
                             <div class="slider-slide">
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
-                                    <div class="review-text">«Отмечали детский выпускной. На базе
-                                        есть абсолютно всё для комфортного отдыха. Если нет
-                                        своего мяча, то можно взять на базе. Угли, дрова
-                                        шампур, всё можно взять на прокат. Сервис просто супер!!!»</div>
+                                    <div class="review-text">«Отмечали детский выпускной. На базе есть абсолютно всё для
+                                        комфортного отдыха. Если нет своего мяча, то можно взять на базе. Угли, дрова,
+                                        шампур — всё можно взять на прокат. Сервис просто супер!!!»</div>
                                     <div class="review-author">— Евгений Р.</div>
                                     <div class="review-date">3 июня 2025</div>
                                 </div>
@@ -1599,8 +1529,8 @@
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
                                     <div class="review-text">«Замечательное место, очень красиво, есть беседки и домики
-                                        на разное количество людей, площадка для детей расположена по центру,
-                                        доступна всем домикам. Будем отмечать второй раз там день рождение)»</div>
+                                        на разное количество людей, площадка для детей расположена по центру, доступна
+                                        всем домикам. Будем отмечать второй раз там день рождение)»</div>
                                     <div class="review-author">— Мария Калабина</div>
                                     <div class="review-date">24 июня 2025</div>
                                 </div>
@@ -1608,8 +1538,8 @@
                             <div class="slider-slide">
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
-                                    <div class="review-text">«Все чистенько спокойно душа там как дома,персонал
-                                        старается выполняют любые просьбы ,место 10/10»</div>
+                                    <div class="review-text">«Все чистенько, спокойно, душа там как дома, персонал
+                                        старается, выполняют любые просьбы, место 10/10»</div>
                                     <div class="review-author">— Елена</div>
                                     <div class="review-date">21 ноября 2026</div>
                                 </div>
@@ -1617,8 +1547,8 @@
                             <div class="slider-slide">
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
-                                    <div class="review-text">«Отличная турбаза. Хорошо отдохнули. Чистые домики,
-                                        пляж, ухоженная территория турбазы, кругом зеленный газон (мягкая трава).»</div>
+                                    <div class="review-text">«Отличная турбаза. Хорошо отдохнули. Чистые домики, пляж,
+                                        ухоженная территория турбазы, кругом зеленый газон (мягкая трава).»</div>
                                     <div class="review-author">— Оксана Черненко</div>
                                     <div class="review-date">27 июля 2025</div>
                                 </div>
@@ -1636,7 +1566,6 @@
                         </div>
                         <div class="slider-dots" id="dots-reviews"></div>
                     </div>
-
                     <div class="awards-block">
                         <div class="award-badge animate-on-scroll">
                             <img src="photos/Яндекс.png" alt="📍"
@@ -1653,7 +1582,7 @@
             </div>
         </section>
 
-        <!-- Контакты -->
+        <!-- КОНТАКТЫ -->
         <section id="contacts" style="background: #ecf5e4;">
             <div class="container">
                 <div class="section-title" style="margin-bottom: 30px;">Как нас найти</div>
@@ -1672,9 +1601,7 @@
                         <div class="contact-item">
                             <i class="fas fa-phone-alt"></i>
                             <span class="contact-label">Телефон:</span>
-                            <span class="contact-value">
-                                <a href="tel:+79044187087">+7 (904) 418-70-87</a>
-                            </span>
+                            <span class="contact-value"><a href="tel:+79044187087">+7 (904) 418-70-87</a></span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
@@ -1693,30 +1620,17 @@
                             <span class="contact-value">Вход с животными запрещён.</span>
                         </div>
                         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-
-                            <a href="tel:+79044187087" class="btn-primary"
-                                style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 0.95rem; white-space: nowrap;">
-                                <i class="fas fa-phone-alt"></i> Забронировать по телефону
-                            </a>
-
-                            <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank"
-                                class="btn-primary"
-                                style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 0.95rem; white-space: nowrap;">
-                                <i class="fab fa-vk"></i> Забронировать в VK
-                            </a>
-
+                            <a href="tel:+79044187087" class="btn-primary"><i class="fas fa-phone-alt"></i>
+                                Забронировать по телефону</a>
+                            <a href="https://vk.com/baza_otdixa_rasdolje" target="_blank" class="btn-primary"><i
+                                    class="fab fa-vk"></i> Забронировать в VK</a>
                             <a href="https://max.ru/u/f9LHodD0cOKPHEjYtFXiVAk6uju2dm1CEIRHN1bJzXYP_71BgOZwAefALdY"
-                                target="_blank" class="btn-primary"
-                                style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 0.95rem; white-space: nowrap;">
+                                target="_blank" class="btn-primary">
                                 <img src="photos/MAX-logo.jpg" alt="MAX" style="height: 20px; width: auto;">
                                 Забронировать в MAX
                             </a>
-
-                            <a id="share-btn" class="btn-primary"
-                                style="display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 0.95rem; white-space: nowrap; background: #3b82f6;">
-                                <i class="fas fa-share-alt"></i> Поделиться
-                            </a>
-
+                            <a id="share-btn" class="btn-primary" style="background: #3b82f6;"><i
+                                    class="fas fa-share-alt"></i> Поделиться</a>
                         </div>
                     </div>
                     <div class="map-placeholder">
@@ -1728,7 +1642,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- ===== ПОДВАЛ ===== -->
@@ -1740,7 +1653,7 @@
             <p style="margin: 16px 0;">☎️ +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2023 – 2026 База отдыха «Раздолье»</p>
-            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 15.09.2026</p>
+            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 01.10.2026</p>
         </div>
     </footer>
 
@@ -1755,11 +1668,9 @@
         style="position:fixed; bottom:25px; left:50%; transform:translateX(-50%); background:rgba(30,30,30,0.88); backdrop-filter:blur(6px); color:#fff; padding:18px 26px; border-radius:16px; z-index:9999; display:none; flex-direction:column; align-items:center; gap:12px; width:fit-content; max-width:90%; min-width:260px; box-shadow:0 8px 28px rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.08); font-size:0.95rem; line-height:1.5;">
         <div
             style="font-size:1.15rem; font-weight:700; color:#ffdd99; text-align:center; width:100%; letter-spacing:0.5px;">
-            Предупреждение
-        </div>
-        <div style="text-align:center; width:100%;">
-            Мы собираем статистику через Яндекс.Метрику, чтобы делать сайт лучше и удобнее для вас.
-        </div>
+            Предупреждение</div>
+        <div style="text-align:center; width:100%;">Мы собираем статистику через Яндекс.Метрику, чтобы делать сайт лучше
+            и удобнее для вас.</div>
         <button
             onclick="document.getElementById('stat-modal').style.display='none'; sessionStorage.setItem('statShown','true');"
             style="background:#7cb45e; color:#fff; border:none; padding:8px 28px; border-radius:40px; font-weight:600; cursor:pointer; font-size:0.9rem; margin-top:4px;">
@@ -1769,7 +1680,7 @@
 
     <!-- ===== СКРИПТЫ ===== -->
     <script>
-        // ===== ГЛОБАЛЬНАЯ ФУНКЦИЯ ДЛЯ ОШИБОК ФОТО =====
+        // 1. ФУНКЦИЯ ДЛЯ ОШИБОК ФОТО
         function showError(img) {
             img.onerror = null;
             let name = img.alt || '';
@@ -1777,20 +1688,17 @@
                 const parentCard = img.closest('.card');
                 if (parentCard) {
                     const title = parentCard.querySelector('h3');
-                    if (title) {
-                        name = title.textContent.trim();
-                    }
+                    if (title) name = title.textContent.trim();
                 }
             }
             if (!name) name = 'Фото';
-
             img.outerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;flex-shrink:0;background:#2a3d24;color:white;text-align:center;padding:10px;box-sizing:border-box;overflow:hidden;word-wrap:break-word;overflow-wrap:break-word;">
                 <div style="font-size:1rem;font-weight:bold;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">Фото не прогрузилось :(</div>
                 <div style="font-size:0.85rem;font-weight:normal;margin-top:4px;line-height:1.3;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;word-break:break-word;">${name}</div>
             </div>`;
         }
 
-        // ===== СЛАЙД-ШОУ =====
+        // 2. СЛАЙД-ШОУ (ФОН ГЕРОЯ)
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slideshow-bg img');
 
@@ -1802,11 +1710,9 @@
             setTimeout(showSlides, 10000);
         }
 
-        if (slides.length > 0) {
-            setTimeout(showSlides, 10000);
-        }
+        if (slides.length > 0) setTimeout(showSlides, 10000);
 
-        // ===== ЛОГОТИП =====
+        // 3. ЛОГОТИП (ЗАГЛУШКА)
         const logoImg = document.querySelector('.logo-img');
         if (logoImg) {
             logoImg.onerror = function () {
@@ -1816,39 +1722,27 @@
             };
         }
 
-        // ===== АНИМАЦИИ ПРИ СКРОЛЛЕ =====
+        // 4. АНИМАЦИИ ПРИ СКРОЛЛЕ
         document.addEventListener('DOMContentLoaded', function () {
             const elements = document.querySelectorAll('.animate-on-scroll');
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
-            }, {
-                threshold: 0.1
-            });
-
+            }, { threshold: 0.1 });
             elements.forEach(el => observer.observe(el));
         });
 
-        // ===== КНОПКА "НАВЕРХ" =====
+        // 5. КНОПКА "НАВЕРХ"
         var backToTop = document.getElementById('back-to-top');
-
         window.addEventListener('scroll', function () {
-            if (window.scrollY > 400) {
-                backToTop.style.display = 'block';
-            } else {
-                backToTop.style.display = 'none';
-            }
+            backToTop.style.display = window.scrollY > 400 ? 'block' : 'none';
         });
-
         backToTop.addEventListener('click', function () {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // ===== КНОПКА "ПОДЕЛИТЬСЯ" =====
+        // 6. КНОПКА "ПОДЕЛИТЬСЯ"
         document.getElementById('share-btn').addEventListener('click', function () {
             if (navigator.share) {
                 navigator.share({
@@ -1859,12 +1753,11 @@
             } else {
                 var url = 'https://razdolie-kam.ru';
                 var text = 'Отличное место для отдыха в Камышине!';
-                window.open('https://vk.com/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(
-                    text), '_blank');
+                window.open('https://vk.com/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(text), '_blank');
             }
         });
 
-        // ===== УВЕДОМЛЕНИЕ О СТАТИСТИКЕ =====
+        // 7. УВЕДОМЛЕНИЕ О СТАТИСТИКЕ
         (function () {
             if (!sessionStorage.getItem('statShown')) {
                 document.getElementById('stat-modal').style.display = 'flex';
@@ -1872,7 +1765,7 @@
             }
         })();
 
-        // ===== ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ =====
+        // 8. ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРОВ В КАРТОЧКАХ
         window.addEventListener('load', function () {
             setTimeout(function () {
                 function initSlider(wrapperId, dotsId, interval) {
@@ -1901,19 +1794,12 @@
                         currentIndex = index;
                         track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
                         dots.forEach(function (dot, i) {
-                            if (i === currentIndex) {
-                                dot.classList.add('active');
-                            } else {
-                                dot.classList.remove('active');
-                            }
+                            dot.classList.toggle('active', i === currentIndex);
                         });
                         resetAutoSlide();
                     }
 
-                    function nextSlide() {
-                        goToSlide((currentIndex + 1) % slides.length);
-                    }
-
+                    function nextSlide() { goToSlide((currentIndex + 1) % slides.length); }
                     function resetAutoSlide() {
                         clearInterval(autoSlide);
                         autoSlide = setInterval(nextSlide, interval);
@@ -1929,34 +1815,29 @@
                         touchStartX = e.changedTouches[0].screenX;
                     });
                     wrapper.addEventListener('touchend', function (e) {
-                        var touchEndX = e.changedTouches[0].screenX;
-                        var diff = touchStartX - touchEndX;
+                        var diff = touchStartX - e.changedTouches[0].screenX;
                         if (Math.abs(diff) > 50) {
-                            if (diff > 0) {
-                                goToSlide((currentIndex + 1) % slides.length);
-                            } else {
-                                goToSlide((currentIndex - 1 + slides.length) % slides.length);
-                            }
+                            if (diff > 0) goToSlide((currentIndex + 1) % slides.length);
+                            else goToSlide((currentIndex - 1 + slides.length) % slides.length);
                         }
                     });
                 }
 
-                // Слайдеры инфраструктур
+                // Инфраструктура
                 initSlider('slider-beach', 'dots-beach', 5000);
                 initSlider('slider-gazebos', 'dots-gazebos', 5100);
                 initSlider('slider-playground', 'dots-playground', 5200);
                 initSlider('slider-sport', 'dots-sport', 5300);
-                // Слайдеры домиков
+                // Домики
                 initSlider('slider-redhouse', 'dots-redhouse', 5000);
                 initSlider('slider-loft', 'dots-loft', 5100);
                 initSlider('slider-big', 'dots-big', 5200);
                 initSlider('slider-beachhouse', 'dots-beachhouse', 5300);
-                // Слайдер отзывов
+                // Отзывы
                 initSlider('slider-reviews', 'dots-reviews', 11000);
             }, 100);
         });
     </script>
-
 </body>
 
 </html>
