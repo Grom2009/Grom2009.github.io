@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://razdolie-kam.ru/sitemap.xml
