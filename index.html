@@ -364,19 +364,20 @@
         }
 
         .card-slider .slider-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.6);
             cursor: pointer;
             border: none;
             padding: 0;
             transition: 0.3s;
+            margin: 0 2px;
         }
 
         .card-slider .slider-dot.active {
             background: #5f9e4b;
-            width: 24px;
+            width: 25px;
             border-radius: 10px;
         }
 
@@ -1719,6 +1720,7 @@
                     <div class="map-placeholder">
                         <iframe
                             src="https://yandex.ru/map-widget/v1/?ll=45.387209%2C50.097385&z=15&pt=45.387209%2C50.097385~ymapsbm1%3A%2F%2Forg%3Foid%3D114323937885"
+                            title="Карта проезда к базе отдыха Раздолье"
                             width="100%" height="320" frameborder="0" allowfullscreen="true"
                             style="border-radius: 24px; display: block; border: none;"></iframe>
                     </div>
@@ -1919,6 +1921,19 @@
                 // Отзывы
                 initSlider('slider-reviews', 'dots-reviews', 11000);
             }, 100);
+        });
+
+        // Автоматическое добавление alt для слайдеров
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.slider-slide img').forEach(img => {
+                if (!img.alt) {
+                    const card = img.closest('.card');
+                    const title = card?.querySelector('h3');
+                    if (title) {
+                        img.alt = title.textContent.trim();
+                    }
+                }
+            });
         });
     </script>
 </body>
