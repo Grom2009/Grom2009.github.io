@@ -745,6 +745,212 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
         }
 
+        /* ===== ЛАЙТБОКС С ЗУМОМ ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+        }
+
+        .lightbox.active {
+            display: block;
+        }
+
+        .lightbox-stage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: grab;
+            overflow: hidden;
+            perspective: 1200px;
+        }
+
+        .lightbox-stage.grabbing {
+            cursor: grabbing;
+        }
+
+        .lightbox-img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            user-select: none;
+            -webkit-user-drag: none;
+            transform-origin: center center;
+            will-change: transform;
+            pointer-events: none;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+        }
+
+        .lightbox-img.dragging {
+            transition: none !important;
+        }
+
+        /* Анимация ухода влево */
+        .lightbox-img.slide-out-left {
+            transform: translateX(-120%) scale(1);
+            opacity: 0;
+            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+        }
+
+        /* Анимация ухода вправо */
+        .lightbox-img.slide-out-right {
+            transform: translateX(120%) scale(1);
+            opacity: 0;
+            transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+        }
+
+        /* Анимация прихода слева */
+        .lightbox-img.slide-in-left {
+            transform: translateX(-120%) scale(1);
+            opacity: 0;
+            transition: none;
+        }
+
+        /* Анимация прихода справа */
+        .lightbox-img.slide-in-right {
+            transform: translateX(120%) scale(1);
+            opacity: 0;
+            transition: none;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10002;
+            line-height: 1;
+            transition: 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: #c9e24b;
+            transform: scale(1.1);
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10002;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(0, 0, 0, 0.7);
+            color: #c9e24b;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 6px 16px;
+            border-radius: 20px;
+            z-index: 10002;
+        }
+
+        /* ===== FULLSCREEN ВИДЕО С ЧЁРНЫМИ ПОЛОСАМИ ===== */
+
+        /* Стандартное видео */
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Fullscreen — сохраняем пропорции */
+        video:fullscreen {
+            object-fit: contain !important;
+            background: #000 !important;
+        }
+
+        video:-webkit-full-screen {
+            object-fit: contain !important;
+            background: #000 !important;
+        }
+
+        video:-moz-full-screen {
+            object-fit: contain !important;
+            background: #000 !important;
+        }
+
+        video:-ms-fullscreen {
+            object-fit: contain !important;
+            background: #000 !important;
+        }
+
+        /* Контейнер в fullscreen */
+        .video-container:fullscreen {
+            background: #000 !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container:fullscreen video {
+            width: auto !important;
+            height: 100% !important;
+            max-width: 100%;
+            object-fit: contain !important;
+        }
+
+        @media (max-width: 768px) {
+
+            .lightbox-prev,
+            .lightbox-next {
+                font-size: 2rem;
+                width: 44px;
+                height: 44px;
+            }
+
+            .lightbox-close {
+                font-size: 2.5rem;
+                top: 15px;
+                right: 20px;
+            }
+        }
+
         /* 15. АДАПТИВ (ВСЁ В ОДНОМ МЕСТЕ) */
 
         /* --- Планшет и ПК --- */
@@ -1620,10 +1826,11 @@
                             <div class="slider-slide">
                                 <div class="review-card animate-on-scroll">
                                     <div class="stars">★★★★★</div>
-                                    <div class="review-text">«Все чистенько, спокойно, душа там как дома, персонал
-                                        старается, выполняют любые просьбы, место 10/10»</div>
-                                    <div class="review-author">— Елена</div>
-                                    <div class="review-date">21 ноября 2026</div>
+                                    <div class="review-text">«Остановились с палаткой! Переночевали отлично! Место
+                                        чистое, ухоженное, с приятным персоналом! Цены адекватные! Рекомендуем!!!!»
+                                    </div>
+                                    <div class="review-author">— Сергей Пахомов</div>
+                                    <div class="review-date">19 сентября 2026</div>
                                 </div>
                             </div>
                             <div class="slider-slide">
@@ -1717,9 +1924,8 @@
                     <div class="map-placeholder">
                         <iframe
                             src="https://yandex.ru/map-widget/v1/?ll=45.387209%2C50.097385&z=15&pt=45.387209%2C50.097385~ymapsbm1%3A%2F%2Forg%3Foid%3D114323937885"
-                            title="Карта проезда к базе отдыха Раздолье"
-                            width="100%" height="320" frameborder="0" allowfullscreen="true"
-                            style="border-radius: 24px; display: block; border: none;"></iframe>
+                            title="Карта проезда к базе отдыха Раздолье" width="100%" height="320" frameborder="0"
+                            allowfullscreen="true" style="border-radius: 24px; display: block; border: none;"></iframe>
                     </div>
                 </div>
             </div>
@@ -1758,6 +1964,18 @@
             style="background:#7cb45e; color:#fff; border:none; padding:8px 28px; border-radius:40px; font-weight:600; cursor:pointer; font-size:0.9rem; margin-top:4px;">
             Хорошо
         </button>
+    </div>
+
+    <!-- ===== ЛАЙТБОКС С ЗУМОМ ===== -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev">&#10094;</span>
+        <span class="lightbox-next">&#10095;</span>
+        <div class="lightbox-stage">
+            <img class="lightbox-img" src="" alt="" draggable="false">
+        </div>
+        <div class="lightbox-counter"><span class="lightbox-current">1</span> / <span class="lightbox-total">1</span>
+        </div>
     </div>
 
     <!-- ===== СКРИПТЫ ===== -->
@@ -1932,6 +2150,411 @@
                 }
             });
         });
+
+        // ===== ЛАЙТБОКС С ЗУМОМ, ПЕРЕТАСКИВАНИЕМ И SLIDE-АНИМАЦИЕЙ =====
+
+        (function () {
+            const lightbox = document.getElementById('lightbox');
+            const stage = lightbox.querySelector('.lightbox-stage');
+            const img = lightbox.querySelector('.lightbox-img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+            const counterCur = lightbox.querySelector('.lightbox-current');
+            const counterTotal = lightbox.querySelector('.lightbox-total');
+
+            let currentImages = [];
+            let currentIndex = 0;
+
+            // Зум и позиция
+            let scale = 1;
+            let posX = 0;
+            let posY = 0;
+            const MIN_SCALE = 1;
+            const MAX_SCALE = 5;
+
+            // Перетаскивание мышью
+            let isDragging = false;
+            let dragStartX = 0, dragStartY = 0;
+            let dragOriginX = 0, dragOriginY = 0;
+
+            // Pinch (телефон)
+            let pinchStartDist = 0;
+            let pinchStartScale = 1;
+            let isPinching = false;
+
+            // Свайп (телефон)
+            let touchStartX = 0, touchStartY = 0;
+            let touchMoved = false;
+
+            // Анимация
+            let isAnimating = false;
+
+            // ===== БАЗОВЫЕ ФУНКЦИИ =====
+
+            function applyTransform() {
+                img.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+            }
+
+            function resetTransform() {
+                scale = 1;
+                posX = 0;
+                posY = 0;
+                applyTransform();
+            }
+
+            // === ПРАВИЛЬНАЯ ФУНКЦИЯ ОГРАНИЧЕНИЯ ===
+            function clampPosition() {
+                if (scale <= 1) {
+                    posX = 0;
+                    posY = 0;
+                    return;
+                }
+
+                // Размеры сцены
+                const stageW = stage.clientWidth;
+                const stageH = stage.clientHeight;
+
+                // Размеры изображения после применения object-fit: contain
+                const imgW = img.clientWidth;
+                const imgH = img.clientHeight;
+
+                // Реальные размеры увеличенного изображения
+                const scaledW = imgW * scale;
+                const scaledH = imgH * scale;
+
+                // Максимально возможное смещение
+                const maxX = Math.max(0, (scaledW - stageW) / 2);
+                const maxY = Math.max(0, (scaledH - stageH) / 2);
+
+                posX = Math.max(-maxX, Math.min(maxX, posX));
+                posY = Math.max(-maxY, Math.min(maxY, posY));
+            }
+
+            function updateCounter() {
+                counterCur.textContent = currentIndex + 1;
+                counterTotal.textContent = currentImages.length;
+            }
+
+            // ===== ОТКРЫТИЕ / ЗАКРЫТИЕ =====
+
+            function openLightbox(clickedImg) {
+                const card = clickedImg.closest('.card');
+
+                let images;
+                if (card) {
+                    images = card.querySelectorAll('.slider-slide img, .card-slider img');
+                } else {
+                    images = document.querySelectorAll('.slider-slide img');
+                }
+
+                currentImages = Array.from(images).map(i => ({
+                    src: i.src,
+                    alt: i.alt || 'Фото'
+                }));
+
+                if (!currentImages.length) return;
+
+                currentIndex = currentImages.findIndex(item => item.src === clickedImg.src);
+                if (currentIndex === -1) currentIndex = 0;
+
+                img.src = currentImages[currentIndex].src;
+                img.alt = currentImages[currentIndex].alt;
+
+                // Сброс классов анимации
+                img.classList.remove('slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+                img.style.transition = 'none';
+                resetTransform();
+
+                updateCounter();
+
+                // Принудительный reflow, чтобы transition сработал
+                void img.offsetWidth;
+                img.style.transition = '';
+
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                resetTransform();
+            }
+
+            // ===== SLIDE-АНИМАЦИЯ ПЕРЕКЛЮЧЕНИЯ =====
+
+            function showSlide(index, direction) {
+                if (!currentImages.length || isAnimating) return;
+
+                isAnimating = true;
+
+                // direction: 1 = вперёд (налево), -1 = назад (направо)
+                if (direction === undefined) {
+                    direction = index > currentIndex ? 1 : -1;
+                    // Если переход через 0
+                    if (index === 0 && currentIndex === currentImages.length - 1) direction = 1;
+                    if (index === currentImages.length - 1 && currentIndex === 0) direction = -1;
+                }
+
+                // Сбрасываем зум
+                scale = 1;
+                posX = 0;
+                posY = 0;
+                img.style.transform = '';
+
+                // 1. Уход текущего фото
+                const outClass = direction > 0 ? 'slide-out-left' : 'slide-out-right';
+                img.classList.add(outClass);
+
+                setTimeout(() => {
+                    // 2. Меняем src
+                    currentIndex = (index + currentImages.length) % currentImages.length;
+                    img.src = currentImages[currentIndex].src;
+                    img.alt = currentImages[currentIndex].alt;
+                    updateCounter();
+
+                    // 3. Убираем уход, ставим приход
+                    img.classList.remove(outClass);
+                    const inClass = direction > 0 ? 'slide-in-right' : 'slide-in-left';
+                    img.classList.add(inClass);
+
+                    // 4. Форсируем reflow
+                    void img.offsetWidth;
+
+                    // 5. Убираем класс прихода → плавно выезжает на место
+                    img.classList.remove(inClass);
+
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 350);
+                }, 300);
+            }
+
+            // ===== КЛИК ПО ФОТО =====
+            document.addEventListener('click', function (e) {
+                if (e.target.matches('.slider-slide img')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openLightbox(e.target);
+                }
+            });
+
+            // ===== КНОПКИ =====
+            closeBtn.addEventListener('click', closeLightbox);
+            prevBtn.addEventListener('click', function (e) { e.stopPropagation(); showSlide(currentIndex - 1, -1); });
+            nextBtn.addEventListener('click', function (e) { e.stopPropagation(); showSlide(currentIndex + 1, 1); });
+
+            // ===== КЛИК ПО ФОНУ (только если не было drag) =====
+            stage.addEventListener('click', function (e) {
+                // Если только что перетаскивали — НЕ закрываем
+                if (wasDragged) {
+                    wasDragged = false;
+                    return;
+                }
+
+                // Закрываем только при чистом клике по фону
+                if (e.target === stage) {
+                    closeLightbox();
+                }
+            });
+
+            // ===== КЛАВИАТУРА =====
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') showSlide(currentIndex + 1, 1);
+                if (e.key === 'ArrowLeft') showSlide(currentIndex - 1, -1);
+            });
+
+            // ===== ЗУМ КОЛЕСИКОМ =====
+            stage.addEventListener('wheel', function (e) {
+                if (!lightbox.classList.contains('active')) return;
+                e.preventDefault();
+
+                const factor = e.ctrlKey ? 0.05 : 0.15;
+                const delta = e.deltaY < 0 ? 1 + factor : 1 - factor;
+
+                const oldScale = scale;
+                scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale * delta));
+
+                if (scale !== oldScale) {
+                    const rect = stage.getBoundingClientRect();
+                    const mouseX = e.clientX - rect.left - rect.width / 2;
+                    const mouseY = e.clientY - rect.top - rect.height / 2;
+
+                    posX -= mouseX * (scale / oldScale - 1);
+                    posY -= mouseY * (scale / oldScale - 1);
+
+                    clampPosition();
+                    applyTransform();
+                }
+            }, { passive: false });
+
+            // ===== ПЕРЕТАСКИВАНИЕ МЫШЬЮ =====
+            let wasDragged = false; // флаг: было ли реальное перемещение
+
+            stage.addEventListener('mousedown', function (e) {
+                if (e.button !== 0) return;
+                if (scale <= 1) return;
+
+                isDragging = true;
+                wasDragged = false;
+
+                stage.classList.add('grabbing');
+                img.classList.add('dragging'); // отключаем transition
+
+                dragStartX = e.clientX;
+                dragStartY = e.clientY;
+                dragOriginX = posX;
+                dragOriginY = posY;
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                if (!isDragging) return;
+                e.preventDefault();
+
+                const dx = e.clientX - dragStartX;
+                const dy = e.clientY - dragStartY;
+
+                // Если сдвинули больше 3px — это реальный drag, а не клик
+                if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+                    wasDragged = true;
+                }
+
+                posX = dragOriginX + dx;
+                posY = dragOriginY + dy;
+
+                clampPosition();
+                applyTransform();
+            });
+
+            document.addEventListener('mouseup', function () {
+                if (!isDragging) return;
+
+                isDragging = false;
+                stage.classList.remove('grabbing');
+                img.classList.remove('dragging'); // возвращаем transition
+            });
+
+            // ===== ДВОЙНОЙ КЛИК — ЗУМ 2x =====
+            stage.addEventListener('dblclick', function (e) {
+                e.preventDefault();
+                if (scale > 1) {
+                    resetTransform();
+                } else {
+                    scale = 2;
+
+                    const rect = stage.getBoundingClientRect();
+                    const mouseX = e.clientX - rect.left - rect.width / 2;
+                    const mouseY = e.clientY - rect.top - rect.height / 2;
+
+                    posX = -mouseX * (scale - 1);
+                    posY = -mouseY * (scale - 1);
+
+                    clampPosition();
+                    applyTransform();
+                }
+            });
+
+            // ===== ТЕЛЕФОН: PINCH + ПЕРЕТАСКИВАНИЕ + СВАЙП =====
+            stage.addEventListener('touchstart', function (e) {
+                if (e.touches.length === 2) {
+                    // Pinch — отключаем transition
+                    isPinching = true;
+                    img.classList.add('dragging');
+
+                    pinchStartDist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    pinchStartScale = scale;
+                    touchMoved = false;
+                } else if (e.touches.length === 1) {
+                    // Один палец — возможный drag или свайп
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                    dragStartX = e.touches[0].clientX;
+                    dragStartY = e.touches[0].clientY;
+                    dragOriginX = posX;
+                    dragOriginY = posY;
+                    touchMoved = false;
+                    isPinching = false;
+                    wasDragged = false;
+
+                    // Отключаем transition только при scale > 1
+                    if (scale > 1) {
+                        img.classList.add('dragging');
+                    }
+                }
+            }, { passive: true });
+
+            stage.addEventListener('touchmove', function (e) {
+                if (e.touches.length === 2 && isPinching) {
+                    // Pinch-zoom
+                    e.preventDefault();
+                    const dist = Math.hypot(
+                        e.touches[0].clientX - e.touches[1].clientX,
+                        e.touches[0].clientY - e.touches[1].clientY
+                    );
+                    scale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, pinchStartScale * (dist / pinchStartDist)));
+                    clampPosition();
+                    applyTransform();
+                    touchMoved = true;
+
+                } else if (e.touches.length === 1) {
+                    const dx = e.touches[0].clientX - dragStartX;
+                    const dy = e.touches[0].clientY - dragStartY;
+
+                    if (scale > 1) {
+                        // Перетаскивание картинки
+                        e.preventDefault();
+                        posX = dragOriginX + dx;
+                        posY = dragOriginY + dy;
+                        clampPosition();
+                        applyTransform();
+
+                        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+                            touchMoved = true;
+                            wasDragged = true;
+                        }
+                    } else {
+                        // Возможный свайп
+                        if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+                            touchMoved = true;
+                        }
+                    }
+                }
+            }, { passive: false });
+
+            stage.addEventListener('touchend', function (e) {
+                // Убираем класс dragging
+                img.classList.remove('dragging');
+
+                if (isPinching) {
+                    if (scale <= 1.05) resetTransform();
+                    isPinching = false;
+                    return;
+                }
+
+                // Свайп для переключения (только при scale == 1)
+                if (e.changedTouches.length === 1 && scale <= 1 && touchMoved) {
+                    const dx = e.changedTouches[0].clientX - touchStartX;
+                    const dy = e.changedTouches[0].clientY - touchStartY;
+
+                    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+                        if (dx < 0) showSlide(currentIndex + 1, 1);
+                        else showSlide(currentIndex - 1, -1);
+                    }
+                }
+
+                // Если был drag — не даём click закрыть лайтбокс
+                if (wasDragged) {
+                    setTimeout(() => { wasDragged = false; }, 100);
+                }
+            }, { passive: true });
+
+        })();
     </script>
 </body>
 
