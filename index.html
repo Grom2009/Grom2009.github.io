@@ -951,6 +951,118 @@
             }
         }
 
+        /* ===== СТИЛИ ДЛЯ АКЦИИ НА ГЛАВНОЙ ===== */
+        .badge-promo {
+            background: #d9534f;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 14px;
+        }
+
+        .price-old-home {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #88a078;
+            text-decoration: line-through;
+            text-decoration-color: #d9534f;
+            text-decoration-thickness: 2px;
+            margin-right: 4px;
+        }
+
+        /* ===== АНИМАЦИЯ ЦЕН ===== */
+        .price-anim-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 800;
+            margin-top: 12px;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 8px 16px;
+            border-radius: 40px;
+            max-width: 100%;
+        }
+
+        .price-anim-old {
+            position: relative;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            white-space: nowrap;
+            /* Запрет переноса для старых цифр */
+        }
+
+        /* Линия перечеркивания */
+        .price-anim-old::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: #ffeb3b;
+            transform: translateY(-50%) rotate(-5deg);
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        .price-anim-new {
+            font-size: 2rem;
+            color: #ffeb3b;
+            white-space: nowrap;
+            /* Запрет переноса для новых цифр */
+            /* Возвращаем анимацию */
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.8s ease 1.2s, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s;
+        }
+
+        /* Запуск анимации при появлении на экране */
+        .animate-on-scroll.visible .price-anim-old::after {
+            width: 100%;
+        }
+
+        .animate-on-scroll.visible .price-anim-new {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Мобильная адаптация (уменьшаем размеры, но сохраняем анимацию) */
+        @media (max-width: 400px) {
+            .price-anim-wrapper {
+                gap: 6px;
+                padding: 6px 12px;
+            }
+
+            .price-anim-old {
+                font-size: 1.1rem;
+            }
+
+            .price-anim-new {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Уменьшаем заголовок акции на телефонах */
+        @media (max-width: 500px) {
+            #promo-title {
+                font-size: 1.25rem !important;
+                letter-spacing: 0.5px !important;
+                white-space: nowrap !important;
+            }
+        }
+
+        @media (max-width: 330px) {
+            #promo-title {
+                font-size: 0.9rem !important;
+                letter-spacing: 0px !important;
+                white-space: nowrap !important;
+            }
+        }
+
         /* 15. АДАПТИВ (ВСЁ В ОДНОМ МЕСТЕ) */
 
         /* --- Планшет и ПК --- */
@@ -1443,6 +1555,34 @@
                     Живописное место для семейного отдыха, весёлых больших компаний и романтических выходных.
                 </div>
 
+                <!-- БАННЕР АКЦИИ -->
+                <div class="animate-on-scroll"
+                    style="background: linear-gradient(135deg, #d9534f, #c9302c); color: #fff; padding: 24px 32px; border-radius: 24px; text-align: center; max-width: 700px; margin: 0 auto 40px; box-shadow: 0 10px 25px rgba(217, 83, 79, 0.3);">
+                    <h3 id="promo-title"
+                        style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">
+                        🍂 Осенние скидки 🍂</h3>
+                    <p style="font-size: 1.15rem; font-weight: 500; margin-bottom: 6px;">Осенью падают не только
+                        листья...</p>
+                    <p
+                        style="font-size: 1.5rem; font-weight: 900; color: #ffeb3b; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); letter-spacing: 1px;">
+                        ОБВАЛ ЦЕН В «РАЗДОЛЬЕ»!</p>
+                    <!-- Анимированные цены -->
+                    <div class="price-anim-wrapper">
+                        <span class="price-anim-old">12 000 ₽</span>
+                        <span class="price-anim-new">6 000 ₽</span>
+                    </div>
+                    <div style="font-size: 0.9rem; margin-top: 8px; font-weight: 500;">
+                        На Зелёный и Синий домики
+                    </div>
+                    <div class="price-anim-wrapper" style="margin-top: 12px;">
+                        <span class="price-anim-old">14 000 ₽</span>
+                        <span class="price-anim-new">7 000 ₽</span>
+                    </div>
+                    <div style="font-size: 0.9rem; margin-top: 8px; font-weight: 500;">
+                        На Пляжный дом
+                    </div>
+                </div>
+
                 <div
                     style="text-align: center; max-width: 800px; margin: 0 auto 30px; font-size: 1.3rem; font-weight: 700; color: #2a6b2a;">
                     Мы предлагаем:
@@ -1667,10 +1807,10 @@
                         </div>
                         <a href="prices.html#big" class="card-link">
                             <div class="card-content">
-                                <h3>Большая беседка</h3>
-                                <p>До 60 гостей. Есть холодильник, чайник, микроволновка, столы, лавочки. Сплит-система
-                                    и буржуйка.</p>
-                                <div class="badge">от 15 000 ₽</div>
+                                <h3>Большая беседка <span class="badge badge-promo">Осенние скидки</span></h3>
+                                <p>До 60 гостей. Есть холодильник, чайник, микроволновка, столы,
+                                    лавочки. Сплит-система и буржуйка.</p>
+                                <div class="badge"><span class="price-old-home">от 15 000 ₽</span> от 12 000 ₽</div>
                             </div>
                         </a>
                     </div>
@@ -1688,10 +1828,10 @@
                         </div>
                         <a href="prices.html#beachhouse" class="card-link">
                             <div class="card-content">
-                                <h3>Пляжный дом</h3>
+                                <h3>Пляжный дом <span class="badge badge-promo">Осенние скидки</span></h3>
                                 <p>До 25 человек. Внутри: столы, лавочки, 2 холодильника, микроволновка, чайник,
                                     рукомойник, сплит-система.</p>
-                                <div class="badge">от 14 000 ₽</div>
+                                <div class="badge"><span class="price-old-home">от 14 000 ₽</span> от 7 000 ₽</div>
                             </div>
                         </a>
                     </div>
@@ -1941,7 +2081,7 @@
             <p style="margin: 16px 0;">☎️ +7 (904) 418-70-87</p>
             <hr style="margin: 24px auto; width: 80px; border-color: #4f7942;">
             <p style="font-size: 0.9rem;">© 2023 – 2026 База отдыха «Раздолье»</p>
-            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 01.10.2026</p>
+            <p style="font-size: 0.7rem; margin: 16px 0 0;">Обновление 23.10.2026</p>
         </div>
     </footer>
 
